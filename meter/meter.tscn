@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://meter/meter.gd" type="Script" id=1]
+
+[node name="ProgressBar" type="ProgressBar"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -200.0
+margin_right = 125.0
+margin_bottom = 14.0
+value = 50.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_top = 3.0
+margin_right = 40.0
+margin_bottom = 43.0
