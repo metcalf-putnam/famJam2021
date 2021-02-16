@@ -1,6 +1,37 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://meter/meter.gd" type="Script" id=1]
+[ext_resource path="res://meter/prog_art_heart.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "beat"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Heart:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.15, 1.15 ), Vector2( 1, 1 ), Vector2( 1.3, 1.3 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "beat"
+} ]
+}
 
 [node name="ProgressBar" type="ProgressBar"]
 anchor_left = 0.5
@@ -8,13 +39,17 @@ anchor_right = 0.5
 margin_left = -200.0
 margin_right = 125.0
 margin_bottom = 14.0
-value = 50.0
+value = 60.0
+percent_visible = false
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureProgress" type="TextureProgress" parent="."]
-margin_top = 3.0
-margin_right = 40.0
-margin_bottom = 43.0
+[node name="Heart" type="Sprite" parent="."]
+position = Vector2( 166.28, 9.52441 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "beat"
+anims/beat = SubResource( 1 )

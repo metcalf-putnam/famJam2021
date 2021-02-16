@@ -1,6 +1,6 @@
 extends Area2D
-var min_scale = 0.1
-var max_scale = 0.13
+var min_scale = 1
+var max_scale = 1.2
 var food_name
 
 

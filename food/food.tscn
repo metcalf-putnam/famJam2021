@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://food/banana.png" type="Texture" id=1]
+[ext_resource path="res://food/juice.png" type="Texture" id=1]
 [ext_resource path="res://food/food.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 79.6679, 67.1713 )
+extents = Vector2( 39.6581, 53.6872 )
 
 [node name="food" type="Area2D"]
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.642456, -53.9204 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.1, 0.1 )
+position = Vector2( 0, -57.826 )
 texture = ExtResource( 1 )
 [connection signal="input_event" from="." to="." method="_on_food_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_food_mouse_entered"]

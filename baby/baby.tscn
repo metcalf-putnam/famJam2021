@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://baby/highchair.png" type="Texture" id=1]
 [ext_resource path="res://baby/baby.gd" type="Script" id=2]
+[ext_resource path="res://thought_bubble/ThoughtBubble.tscn" type="PackedScene" id=3]
 
 [node name="Baby" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Highchair" type="Sprite" parent="."]
-position = Vector2( 511.783, 296.147 )
+position = Vector2( 511.783, 302.147 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 1 )
 
@@ -23,4 +24,13 @@ scale = Vector2( 0.1, 0.1 )
 position = Vector2( 613, 135 )
 scale = Vector2( 0.1, 0.1 )
 
-[node name="Tween" type="Tween" parent="."]
+[node name="Thought1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 418.978, 251.27 )
+rotation = -0.380482
+
+[node name="Thought2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 514.782, 219.788 )
+
+[node name="Thought3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 601.345, 248.126 )
+rotation = 0.507891

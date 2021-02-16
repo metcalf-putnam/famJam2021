@@ -4,7 +4,7 @@ export (PackedScene) var food_object
 var food = []
 var i = 0
 var rng = RandomNumberGenerator.new()
-var prob_food = 0.5
+var prob_food = 0.6 # probability that any food location will populate food
 const minimum_food_items = 2
 
 

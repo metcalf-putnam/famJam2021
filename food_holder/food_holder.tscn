@@ -9,42 +9,37 @@ script = ExtResource( 2 )
 image = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( 865.192, 298.213 )
-scale = Vector2( 0.157836, 0.199871 )
+position = Vector2( 125.102, 300.042 )
 texture = ExtResource( 1 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 920.751
-margin_top = 542.759
-margin_right = 1020.75
-margin_bottom = 592.759
+margin_left = 144.0
+margin_top = 544.0
+margin_right = 243.999
+margin_bottom = 594.0
 text = "reload"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="test_food" type="Sprite" parent="."]
-position = Vector2( 866.932, 252.112 )
-scale = Vector2( 0.15, 0.15 )
-
 [node name="food_locations" type="Node2D" parent="."]
-position = Vector2( 865.192, 285.213 )
+position = Vector2( 129.695, 337.213 )
 
 [node name="a" type="Position2D" parent="food_locations"]
-position = Vector2( -77.9718, -150.049 )
+position = Vector2( -58.9015, -154.049 )
 
 [node name="b" type="Position2D" parent="food_locations"]
-position = Vector2( 60.8035, -150.049 )
+position = Vector2( 57.8035, -151.049 )
 
 [node name="c" type="Position2D" parent="food_locations"]
-position = Vector2( -71.6592, -16.243 )
+position = Vector2( -61.0646, -16.243 )
 
 [node name="d" type="Position2D" parent="food_locations"]
-position = Vector2( 76.6864, -14.2113 )
+position = Vector2( 53.3782, -14.741 )
 
 [node name="e" type="Position2D" parent="food_locations"]
-position = Vector2( -64.7865, 122.763 )
+position = Vector2( -61.6081, 118.525 )
 
 [node name="f" type="Position2D" parent="food_locations"]
-position = Vector2( 65.6909, 124.567 )
+position = Vector2( 57.2152, 120.329 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

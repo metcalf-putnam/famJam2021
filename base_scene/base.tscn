@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://backgrounds/pantry.png" type="Texture" id=1]
 [ext_resource path="res://baby/baby.tscn" type="PackedScene" id=2]
@@ -7,23 +7,34 @@
 [ext_resource path="res://base_scene/base.gd" type="Script" id=5]
 [ext_resource path="res://food/food.tscn" type="PackedScene" id=6]
 [ext_resource path="res://meter/meter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://backgrounds/background.png" type="Texture" id=8]
 
 [node name="Base" type="Node2D"]
 script = ExtResource( 5 )
 
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 249.707
+margin_right = 649.707
+margin_bottom = 600.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Baby" parent="." instance=ExtResource( 2 )]
+position = Vector2( -61.9822, -1.84549 )
 
 [node name="fridge" parent="." instance=ExtResource( 3 )]
+position = Vector2( 649.813, -0.0651245 )
 image = ExtResource( 4 )
 food_object = ExtResource( 6 )
 
 [node name="pantry" parent="." instance=ExtResource( 3 )]
-position = Vector2( -707.981, 4.76221 )
 image = ExtResource( 1 )
 food_object = ExtResource( 6 )
 
 [node name="ProgressBar" parent="." instance=ExtResource( 7 )]
-margin_left = 350.129
-margin_top = 2.12132
-margin_right = 675.129
-margin_bottom = 16.1213
+margin_left = 285.43
+margin_top = 21.1821
+margin_right = 610.43
+margin_bottom = 35.1821
