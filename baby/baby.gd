@@ -3,7 +3,7 @@ var rng = RandomNumberGenerator.new()
 var chosen_food
 var accepted_change := 4.0
 var declined_change := -4.0
-
+var clue_time_seconds = 2
 
 func _ready():
 	rng.randomize()
@@ -18,12 +18,25 @@ func pick_food():
 	
 	var rand_num = rng.randi_range(0, num -1)
 	chosen_food = FoodDic.foods[rand_num]
+	reset_clues()
 	think_about_food()
 
+func reset_clues():
+	$Clue1.texture = null
+	$Clue2.texture = null
+	$Clue3.texture = null
+	$Tween.remove_all()
 
 func think_about_food():
-	$Thought.texture = load(chosen_food["sprite_path"])
+	var texture = load(chosen_food["sprite_path"])
 	
+	$Tween.interpolate_callback(self, 0, "populate_clue", 1, texture)
+	$Tween.interpolate_callback(self, clue_time_seconds, "populate_clue", 2, texture)
+	$Tween.interpolate_callback(self, 2 * clue_time_seconds, "populate_clue", 3, texture)
+	$Tween.start()
+
+func populate_clue(clue_number, texture):
+	get_node("Clue" + str(clue_number)).texture = texture
 
 func _on_food_clicked(food_name):
 	if food_name == chosen_food["name"]:
