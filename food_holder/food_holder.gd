@@ -5,6 +5,7 @@ var food = []
 var i = 0
 var rng = RandomNumberGenerator.new()
 var prob_food = 0.5
+const minimum_food_items = 2
 
 
 func _ready():
@@ -27,11 +28,16 @@ func reload():
 	if food.size() == 0:
 		return
 	
+	var food_items = 0
 	for n in range($food_locations.get_child_count()):
 		clear_slot($food_locations.get_child(n))
 		var num = rng.randf()
 		if num > prob_food:
 			populate_slot($food_locations.get_child(n))
+			food_items += 1
+	
+	if (food_items < minimum_food_items):
+		reload()
 
 
 func clear_slot(location : Position2D):
