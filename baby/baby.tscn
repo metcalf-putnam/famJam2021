@@ -11,6 +11,16 @@ position = Vector2( 511.783, 296.147 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 1 )
 
-[node name="Thought" type="Sprite" parent="."]
-position = Vector2( 513.151, 136.522 )
+[node name="Clue1" type="Sprite" parent="."]
+position = Vector2( 413, 135 )
 scale = Vector2( 0.1, 0.1 )
+
+[node name="Clue2" type="Sprite" parent="."]
+position = Vector2( 513, 85 )
+scale = Vector2( 0.1, 0.1 )
+
+[node name="Clue3" type="Sprite" parent="."]
+position = Vector2( 613, 135 )
+scale = Vector2( 0.1, 0.1 )
+
+[node name="Tween" type="Tween" parent="."]

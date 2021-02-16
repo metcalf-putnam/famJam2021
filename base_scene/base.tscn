@@ -18,7 +18,7 @@ image = ExtResource( 4 )
 food_object = ExtResource( 6 )
 
 [node name="pantry" parent="." instance=ExtResource( 3 )]
-position = Vector2( -707.981, 4.76221 )
+position = Vector2( -707.981, 5.76221 )
 image = ExtResource( 1 )
 food_object = ExtResource( 6 )
 
