@@ -47,6 +47,4 @@ position = Vector2( -64.7865, 122.763 )
 
 [node name="f" type="Position2D" parent="food_locations"]
 position = Vector2( 65.6909, 124.567 )
-
-[node name="Timer" type="Timer" parent="."]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

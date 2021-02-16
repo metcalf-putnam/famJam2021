@@ -31,8 +31,8 @@ func think_about_food():
 	var texture = load(chosen_food["sprite_path"])
 	
 	$Tween.interpolate_callback(self, 0, "populate_clue", 1, texture)
-	$Tween.interpolate_callback(self, 1, "populate_clue", 2, texture)
-	$Tween.interpolate_callback(self, 2, "populate_clue", 3, texture)
+	$Tween.interpolate_callback(self, clue_time_seconds, "populate_clue", 2, texture)
+	$Tween.interpolate_callback(self, 2 * clue_time_seconds, "populate_clue", 3, texture)
 	$Tween.start()
 
 func populate_clue(clue_number, texture):
