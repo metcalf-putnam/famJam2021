@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/prog_art_heart.png-ecca1ded8749b5aff0a475b695e66da9.stex"
+path="res://.import/hearthappy.png-e034e5b302a014c7e9bb62d71f6ca2f4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://meter/prog_art_heart.png"
-dest_files=[ "res://.import/prog_art_heart.png-ecca1ded8749b5aff0a475b695e66da9.stex" ]
+source_file="res://meter/hearthappy.png"
+dest_files=[ "res://.import/hearthappy.png-e034e5b302a014c7e9bb62d71f6ca2f4.stex" ]
 
 [params]
 

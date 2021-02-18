@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/398711__inspectorj__water-swirl-small-5.wav-774cbd946f2d2059bc76f5479fac1033.sample"
+
+[deps]
+
+source_file="res://sounds/398711__inspectorj__water-swirl-small-5.wav"
+dest_files=[ "res://.import/398711__inspectorj__water-swirl-small-5.wav-774cbd946f2d2059bc76f5479fac1033.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

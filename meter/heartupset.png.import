@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/prog_art_heart_mad.png-84784451bb71508c0ee8ba574c476954.stex"
+path="res://.import/heartupset.png-77ab6934fe7c1bac6801d1eed342ebe9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://meter/prog_art_heart_mad.png"
-dest_files=[ "res://.import/prog_art_heart_mad.png-84784451bb71508c0ee8ba574c476954.stex" ]
+source_file="res://meter/heartupset.png"
+dest_files=[ "res://.import/heartupset.png-77ab6934fe7c1bac6801d1eed342ebe9.stex" ]
 
 [params]
 

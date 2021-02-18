@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://backgrounds/pantry.png" type="Texture" id=1]
 [ext_resource path="res://baby/baby.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://food/food.tscn" type="PackedScene" id=6]
 [ext_resource path="res://meter/meter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://backgrounds/background.png" type="Texture" id=8]
+[ext_resource path="res://sounds/food_apple_drop_onto_fruit_in_bowl_001.wav" type="AudioStream" id=9]
 
 [node name="Base" type="Node2D"]
 script = ExtResource( 5 )
@@ -38,3 +39,7 @@ margin_left = 285.43
 margin_top = 21.1821
 margin_right = 610.43
 margin_bottom = 35.1821
+
+[node name="FoodClicked" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -10.0

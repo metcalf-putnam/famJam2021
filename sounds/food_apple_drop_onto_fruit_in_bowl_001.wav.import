@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/food_apple_drop_onto_fruit_in_bowl_001.wav-5f26e3f53469c4019f75b4ad80a756e9.sample"
+
+[deps]
+
+source_file="res://sounds/food_apple_drop_onto_fruit_in_bowl_001.wav"
+dest_files=[ "res://.import/food_apple_drop_onto_fruit_in_bowl_001.wav-5f26e3f53469c4019f75b4ad80a756e9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -17,6 +17,7 @@ func init_food(name, texture):
 
 func _on_food_mouse_entered():
 	scale_sprite(max_scale)
+	$Hover.play()
 
 
 func _on_food_mouse_exited():
@@ -28,6 +29,7 @@ func _on_food_input_event(_viewport, event, _shape_idx):
 	if event.button_index != BUTTON_LEFT: return
 	if not event.is_pressed(): return
 	
+	$Click.play()
 	EventHub.emit_signal("food_clicked", food_name)
 	queue_free()
 

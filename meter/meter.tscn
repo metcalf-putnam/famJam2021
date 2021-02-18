@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://meter/meter.gd" type="Script" id=1]
-[ext_resource path="res://meter/prog_art_heart.png" type="Texture" id=2]
+[ext_resource path="res://meter/heartupset.png" type="Texture" id=2]
+[ext_resource path="res://sounds/zapsplat_human_heartbeat_single_26493.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "beat"
@@ -13,10 +14,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6, 0.8 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.15, 1.15 ), Vector2( 1, 1 ), Vector2( 1.3, 1.3 ) ]
+"values": [ Vector2( 0.25, 0.25 ), Vector2( 0.35, 0.35 ), Vector2( 0.25, 0.25 ), Vector2( 0.3, 0.3 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -25,12 +26,26 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.7 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "beat"
 } ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("Heartbeat")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [node name="ProgressBar" type="ProgressBar"]
@@ -48,8 +63,13 @@ __meta__ = {
 
 [node name="Heart" type="Sprite" parent="."]
 position = Vector2( 166.28, 9.52441 )
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "beat"
 anims/beat = SubResource( 1 )
+
+[node name="Heartbeat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0

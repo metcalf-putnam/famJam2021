@@ -1,7 +1,7 @@
 extends ProgressBar
-var happy_heart = preload("res://meter/prog_art_heart.png")
-var upset_heart = preload("res://meter/prog_art_heart_upset.png")
-var mad_heart = preload("res://meter/prog_art_heart_mad.png")
+var happy_heart = preload("res://meter/hearthappy.png")
+var upset_heart = preload("res://meter/heartupset.png")
+var mad_heart = preload("res://meter/heartangry.png")
 
 var upset_limit := 75.0
 var mad_limit := 40.0

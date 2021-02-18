@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/prog_art_heart_upset.png-485a746527cca3e53365c491fee6aad2.stex"
+path="res://.import/heartangry.png-53d9a97767f8c6e52273306be58d0bf7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://meter/prog_art_heart_upset.png"
-dest_files=[ "res://.import/prog_art_heart_upset.png-485a746527cca3e53365c491fee6aad2.stex" ]
+source_file="res://meter/heartangry.png"
+dest_files=[ "res://.import/heartangry.png-53d9a97767f8c6e52273306be58d0bf7.stex" ]
 
 [params]
 
