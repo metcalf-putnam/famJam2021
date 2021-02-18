@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 FoodDic="*res://food_dic.gd"
 EventHub="*res://event_hub.gd"
+Global="*res://global.gd"
 
 [debug]
 

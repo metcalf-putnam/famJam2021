@@ -4,20 +4,34 @@ var chosen_food
 var accepted_change := 4.0
 var declined_change := -2.0
 var tantrum_change := -5
-enum State {EATING, IDLE, HUNGRY, TANTRUM}
+enum State {EATING, IDLE, HUNGRY, TANTRUM, THINKING, THROW}
 var state = State.IDLE
 var clue_current := 1
 var bubble_current := 1
+var animationState : AnimationNodeStateMachinePlayback
+var food_accepted
+
+var angry_head = preload("res://baby/baby_parts/angryhead.png")
+var frowning_head = preload("res://baby/baby_parts/frowninghead.png")
+var happy_face = preload("res://baby/baby_parts/happyface.png")
+var sad_head = preload("res://baby/baby_parts/sadhead.png")
+var tantrum_head = preload("res://baby/baby_parts/tantrumhead.png")
 
 
 func _ready():
+	update_head()
+	EventHub.connect("playback_speed_updated", self, "_on_playback_speed_updated")
+	animationState = $AnimationTree["parameters/playback"]
 	rng.randomize()
 	EventHub.connect("food_clicked", self, "_on_food_clicked")
 	EventHub.connect("heart_beat", self, "_on_heart_beat")
+	$AnimationTree.active = true
 
 
 func pick_food():
+	animationState.travel("idle")
 	state = State.HUNGRY
+	update_head()
 	var num = FoodDic.foods.size()
 	if num == 0:
 		print("error: no foods for baby to pick from")
@@ -27,6 +41,30 @@ func pick_food():
 	chosen_food = FoodDic.foods[rand_num]
 	reset_clues()
 	think_about_food()
+
+
+func update_head():
+	var head_tex
+	if state == State.TANTRUM:
+		head_tex = angry_head
+	elif state == State.THROW:
+		head_tex = tantrum_head
+	elif state == State.THINKING:
+		head_tex = frowning_head
+	elif state == State.EATING:
+		head_tex = happy_face
+	else:
+		match Global.mood:
+			Global.Mood.HAPPY:
+				head_tex = happy_face
+			Global.Mood.ANGRY:
+				head_tex = angry_head
+			Global.Mood.UPSET:
+				head_tex = sad_head
+			Global.Mood.SAD:
+				head_tex = frowning_head
+
+	$skeleton/body/head.texture = head_tex
 
 
 func reset_clues():
@@ -59,23 +97,44 @@ func populate_clue(clue_number, texture):
 
 func _on_food_clicked(food_name):
 	# TODO: food will be presented to baby then baby will respond
+	state = State.THINKING
+	animationState.travel("thinking")
+	update_head()
+	Global.active = false
 	if food_name == chosen_food["name"]:
+		food_accepted = true
+	else:
+		food_accepted = false
+
+
+func eat_food():
+	state = State.EATING
+	update_head()
+	reset_clues()
+	animationState.travel("eating")
+
+
+func _on_done_thinking():
+	if food_accepted:
 		EventHub.emit_signal("food_accepted") # may not keep these accepted/declined signals
 		EventHub.emit_signal("patience_changed", accepted_change)
-		pick_food()
+		eat_food()
 	else:
 		EventHub.emit_signal("food_declined") 
 		EventHub.emit_signal("patience_changed", declined_change)
+		state = State.THROW
+		animationState.travel("throw_food")
+	update_head()
 
 
 func get_angry():
 	state = State.TANTRUM
+	Global.active = false
+	update_head()
 	EventHub.emit_signal("tantrum")
 	EventHub.emit_signal("patience_changed", tantrum_change)
 	reset_clues()
-	# TODO: add animation before 
-	pick_food()
-	
+	animationState.travel("tantrum")
 
 
 func _on_heart_beat():
@@ -86,14 +145,37 @@ func _on_heart_beat():
 		bubble_current = 1
 		clue_current += 1
 
-
-	if clue_current == 4:
+	if clue_current == 6:
 			get_angry()
 			return
+
+	if clue_current >= 4:
+		clue_current += 1
+		return
 	
 	get_node("Thought" + str(clue_current)).show_bubble(bubble_current)
 	
 	bubble_current += 1
-	
-	
-	
+
+
+func _on_tantrum_end():
+	Global.active = true
+	pick_food()
+
+
+func _on_done_eating():
+	Global.active = true
+	pick_food()
+
+
+func _on_done_throwing_food():
+	Global.active = true
+	state = State.HUNGRY
+	update_head()
+	animationState.travel("idle")
+
+
+func _on_playback_speed_updated(_value):
+	if state == State.TANTRUM:
+		return
+	update_head()

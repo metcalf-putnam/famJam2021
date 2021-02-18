@@ -247,15 +247,18 @@ anims/bub3 = SubResource( 3 )
 anims/reset = SubResource( 4 )
 
 [node name="Bub1" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -0.944931, 0.944939 )
 texture = ExtResource( 1 )
 
 [node name="Bub2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -2.03895, -32.2712 )
 scale = Vector2( 1.06667, 1.06667 )
 texture = ExtResource( 4 )
 
 [node name="Bub3" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -5.60366, -94.1543 )
 texture = ExtResource( 3 )
 

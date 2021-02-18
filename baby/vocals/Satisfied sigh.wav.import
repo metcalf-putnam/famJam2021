@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Satisfied sigh.wav-8c929c2a52bf2e9539348ffe267e8869.sample"
+
+[deps]
+
+source_file="res://baby/vocals/Satisfied sigh.wav"
+dest_files=[ "res://.import/Satisfied sigh.wav-8c929c2a52bf2e9539348ffe267e8869.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

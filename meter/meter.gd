@@ -2,12 +2,15 @@ extends ProgressBar
 var happy_heart = preload("res://meter/hearthappy.png")
 var upset_heart = preload("res://meter/heartupset.png")
 var mad_heart = preload("res://meter/heartangry.png")
+var sad_heart = preload("res://meter/heartsad.png")
 
-var upset_limit := 75.0
-var mad_limit := 40.0
+var sad_limit := 75.0
+var upset_limit := 50.0
+var mad_limit := 25.0
 
 var happy_speed := 1.0
-var upset_speed := 1.5
+var sad_speed := 1.25
+var upset_speed := 1.75
 var mad_speed := 2.25
 
 
@@ -30,12 +33,19 @@ func _on_patience_changed(amount):
 func _update_heart_sprite():
 	if value <= mad_limit:
 		$Heart.texture = mad_heart
+		Global.mood = Global.Mood.ANGRY
 		update_playback_speed(mad_speed)
 	elif value <= upset_limit:
 		$Heart.texture = upset_heart
+		Global.mood = Global.Mood.UPSET
 		update_playback_speed(upset_speed)
+	elif value <= sad_limit:
+		$Heart.texture = sad_heart
+		Global.mood = Global.Mood.SAD
+		update_playback_speed(sad_speed)
 	else:
 		$Heart.texture = happy_heart
+		Global.mood = Global.Mood.HAPPY
 		update_playback_speed(happy_speed)
 
 

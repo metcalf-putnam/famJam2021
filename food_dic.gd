@@ -14,15 +14,36 @@ var foods = [
 	{
 	"name" : "blueberries",
 	"sprite_path" : "res://food/blueberries.png",
+	"served_path" : "res://food/served_images/blueberriesinbowl.png",
 	"food_holder" : "fridge",
 	"liquid" : false,
-	"dish" : "plate",
+	"dish" : "bowl",
 	"color" : "blue"
+	},
+
+	{
+	"name" : "water",
+	"sprite_path" : "res://food/water.png",
+	"served_path" : "res://food/served_images/watersippy.png",
+	"food_holder" : "fridge",
+	"liquid" : true,
+	"dish" : "sippy",
+	"color" : "blue"
+	},
+
+	{
+	"name" : "oatmeal",
+	"sprite_path" : "res://food/oats.png",
+	"food_holder" : "pantry",
+	"liquid" : false,
+	"dish" : "bowl",
+	"color" : "brown"
 	},
 	
 	{
 	"name" : "juice",
 	"sprite_path" : "res://food/juice.png",
+	"served_path" : "res://food/served_images/juicesippy.png",
 	"food_holder" : "fridge",
 	"liquid" : true,
 	"dish" : "sippy",
@@ -32,6 +53,7 @@ var foods = [
 	{
 	"name" : "milk",
 	"sprite_path" : "res://food/milk.png",
+	"served_path" : "res://food/served_images/milksippy.png",
 	"food_holder" : "fridge",
 	"liquid" : true,
 	"dish" : "sippy",
@@ -41,10 +63,11 @@ var foods = [
 	{
 	"name" : "yogurt",
 	"sprite_path" : "res://food/yogurt.png",
+	"served_path" : "res://food/served_images/yogurtinbowl.png",
 	"food_holder" : "fridge",
 	"liquid" : false,
 	"dish" : "bowl",
-	"color" : "pink"
+	"color" : "blue"
 	},
 ]
 
