@@ -4,7 +4,7 @@ export (PackedScene) var food_object
 var food = []
 var i = 0
 var rng = RandomNumberGenerator.new()
-var prob_food = 0.6 # probability that any food location will populate food
+var prob_food = 0.7 # probability that any food location will populate food
 const minimum_food_items = 2
 
 
@@ -32,7 +32,7 @@ func reload():
 	for n in range($food_locations.get_child_count()):
 		clear_slot($food_locations.get_child(n))
 		var num = rng.randf()
-		if num > prob_food:
+		if num < prob_food:
 			populate_slot($food_locations.get_child(n))
 			food_items += 1
 	
