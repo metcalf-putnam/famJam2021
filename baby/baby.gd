@@ -10,6 +10,7 @@ var clue_current := 1
 var bubble_current := 1
 var animationState : AnimationNodeStateMachinePlayback
 var food_accepted
+var game_over = false
 
 var angry_head = preload("res://baby/baby_parts/angryhead.png")
 var frowning_head = preload("res://baby/baby_parts/frowninghead.png")
@@ -17,9 +18,12 @@ var happy_face = preload("res://baby/baby_parts/happyface.png")
 var sad_head = preload("res://baby/baby_parts/sadhead.png")
 var tantrum_head = preload("res://baby/baby_parts/tantrumhead.png")
 
+var default_clue_audio = preload("res://baby/vocals/Want whimper.wav")
+
 
 func _ready():
 	update_head()
+	EventHub.connect("game_over", self, "_on_game_over")
 	EventHub.connect("playback_speed_updated", self, "_on_playback_speed_updated")
 	animationState = $AnimationTree["parameters/playback"]
 	rng.randomize()
@@ -29,6 +33,7 @@ func _ready():
 
 
 func pick_food():
+	game_over = false
 	animationState.travel("idle")
 	state = State.HUNGRY
 	update_head()
@@ -81,18 +86,33 @@ func think_about_food():
 	# TODO: make this a bit random which clue goes in which slot
 	# and, like, if you have fridge + sippy, that's a bit annoying, since all 
 	# things that go into sippy cup are in the fridge
-	if chosen_food.has("dish") and FoodDic.dishes.has(chosen_food["dish"]):
-		populate_clue(1, load(FoodDic.dishes[chosen_food["dish"]]))
-	if chosen_food.has("food_holder") and FoodDic.food_holders.has(chosen_food["food_holder"]):
-		populate_clue(1, load(FoodDic.food_holders[chosen_food["food_holder"]]))
-	if chosen_food.has("color") and FoodDic.colors.has(chosen_food["color"]):
-		populate_clue(2, chosen_food["color"])
+	var chosen_dish = chosen_food["dish"]
+	if FoodDic.dishes.has(chosen_dish):
+		populate_clue(1, load(FoodDic.dishes[chosen_dish]), get_audio(chosen_dish))
+	
+	var food_holder = chosen_food["food_holder"]
+	if FoodDic.food_holders.has(food_holder):
+		populate_clue(1, load(FoodDic.food_holders[food_holder]), get_audio(food_holder))
 		
-	populate_clue(3, texture)
+	var chosen_color = chosen_food["color"]
+	if FoodDic.colors.has(chosen_color):
+		populate_clue(2, chosen_color, get_audio(chosen_color))
+		
+	populate_clue(3, texture, get_audio(chosen_food["name"]))
 
+func get_audio(word):
+	var audio 
+	
+	if FoodDic.audio_clips.has(word):
+		audio = load(FoodDic.audio_clips[word])
+	
+	if audio:
+		return audio
+	else:
+		return default_clue_audio
 
-func populate_clue(clue_number, texture):
-	get_node("Thought" + str(clue_number)).set_clue(texture)
+func populate_clue(clue_number, texture, sound):
+	get_node("Thought" + str(clue_number)).set_clue(texture, sound)
 
 
 func _on_food_clicked(food_name):
@@ -159,16 +179,22 @@ func _on_heart_beat():
 
 
 func _on_tantrum_end():
+	if game_over:
+		return
 	Global.active = true
 	pick_food()
 
 
 func _on_done_eating():
+	if game_over:
+		return
 	Global.active = true
 	pick_food()
 
 
 func _on_done_throwing_food():
+	if game_over:
+		return
 	Global.active = true
 	state = State.HUNGRY
 	update_head()
@@ -179,3 +205,7 @@ func _on_playback_speed_updated(_value):
 	if state == State.TANTRUM:
 		return
 	update_head()
+
+
+func _on_game_over(_bool):
+	game_over = true

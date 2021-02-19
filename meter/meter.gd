@@ -14,6 +14,16 @@ var upset_speed := 1.75
 var mad_speed := 2.25
 
 
+func start():
+	$AnimationPlayer.play("beat")	
+
+
+func set_value(value_in):
+	value = value_in
+	$Heart.position.x = rect_size.x * value / 100 # TODO: make this tween?
+	_update_heart_sprite()
+
+
 func _ready():
 	EventHub.connect("patience_changed", self, "_on_patience_changed")
 	$Heart.position.x = rect_size.x * value / 100
@@ -60,3 +70,7 @@ func update_playback_speed(new_value):
 func change_value(amount : float):
 	value += amount
 	$Heart.position.x = rect_size.x * value / 100 # TODO: make this tween?
+	if value >= 100 or value <= 0:
+		var win_bool = value >= 100
+		EventHub.emit_signal("game_over", win_bool)
+		$AnimationPlayer.stop()

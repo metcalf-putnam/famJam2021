@@ -2,8 +2,7 @@ extends Node
 
 
 # from meter
-signal meter_zero
-signal meter_full
+signal game_over
 signal heart_beat
 signal playback_speed_updated
 

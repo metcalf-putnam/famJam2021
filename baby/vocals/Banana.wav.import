@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Banana.wav-ecd8f518972a602f142bce018708d400.sample"
+
+[deps]
+
+source_file="res://baby/vocals/Banana.wav"
+dest_files=[ "res://.import/Banana.wav-ecd8f518972a602f142bce018708d400.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

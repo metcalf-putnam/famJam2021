@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Milk.wav-28ca4673f52ff77f74961f9bb39cb786.sample"
+
+[deps]
+
+source_file="res://baby/vocals/Milk.wav"
+dest_files=[ "res://.import/Milk.wav-28ca4673f52ff77f74961f9bb39cb786.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

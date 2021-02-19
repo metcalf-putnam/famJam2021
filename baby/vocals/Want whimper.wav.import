@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Want whimper.wav-5d72aea87523fc0d004b01fce5299027.sample"
+
+[deps]
+
+source_file="res://baby/vocals/Want whimper.wav"
+dest_files=[ "res://.import/Want whimper.wav-5d72aea87523fc0d004b01fce5299027.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

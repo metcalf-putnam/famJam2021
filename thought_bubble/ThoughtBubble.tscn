@@ -266,3 +266,5 @@ texture = ExtResource( 3 )
 position = Vector2( 0.716003, -10.452 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

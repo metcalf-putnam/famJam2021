@@ -15,11 +15,12 @@ func reset():
 	$Bub3/Clue.modulate = normal_modulate
 
 
-func set_clue(texture):
+func set_clue(texture, sound):
 	if texture in FoodDic.colors:
 		set_color_clue(texture)
 	else:
 		$Bub3/Clue.texture = texture
+	$AudioStreamPlayer.stream = sound
 
 
 func set_color_clue(color):
@@ -32,6 +33,8 @@ func show_bubble(num):
 		print("error: bubble does not have a bubble number ", num)
 		return
 	$AnimationPlayer.play("bub" + str(num))
+	if num == 3:
+		$AudioStreamPlayer.play()
 
 
 func _on_playback_speed_updated(new_speed):

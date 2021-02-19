@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/157766__enok123__keyboard-click.wav-927c88cf73693ebbfcf3088cff8d5c73.sample"
+
+[deps]
+
+source_file="res://sounds/157766__enok123__keyboard-click.wav"
+dest_files=[ "res://.import/157766__enok123__keyboard-click.wav-927c88cf73693ebbfcf3088cff8d5c73.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

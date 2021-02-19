@@ -23,23 +23,23 @@ __meta__ = {
 }
 
 [node name="food_locations" type="Node2D" parent="."]
-position = Vector2( 129.695, 337.213 )
+position = Vector2( 129.695, 339.213 )
 
 [node name="a" type="Position2D" parent="food_locations"]
-position = Vector2( -58.9015, -154.049 )
+position = Vector2( -58.9015, -152.049 )
 
 [node name="b" type="Position2D" parent="food_locations"]
-position = Vector2( 57.8035, -151.049 )
+position = Vector2( 57.8035, -150.049 )
 
 [node name="c" type="Position2D" parent="food_locations"]
-position = Vector2( -61.0646, -16.243 )
+position = Vector2( -61.0646, -14.243 )
 
 [node name="d" type="Position2D" parent="food_locations"]
-position = Vector2( 53.3782, -14.741 )
+position = Vector2( 53.3782, -11.741 )
 
 [node name="e" type="Position2D" parent="food_locations"]
-position = Vector2( -61.6081, 118.525 )
+position = Vector2( -61.6081, 119.525 )
 
 [node name="f" type="Position2D" parent="food_locations"]
-position = Vector2( 57.2152, 120.329 )
+position = Vector2( 57.2152, 121.329 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

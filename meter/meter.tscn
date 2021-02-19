@@ -67,7 +67,6 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "beat"
 anims/beat = SubResource( 1 )
 
 [node name="Heartbeat" type="AudioStreamPlayer" parent="."]
