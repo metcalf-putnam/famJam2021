@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mini_pantry.png-f3460969d46555128d659b45aeb2120e.stex"
+path="res://.import/thoughtbubble.png-e6e935cb515ae138165c0d411d57931d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://food/mini_pantry.png"
-dest_files=[ "res://.import/mini_pantry.png-f3460969d46555128d659b45aeb2120e.stex" ]
+source_file="res://thought_bubble/thoughtbubble.png"
+dest_files=[ "res://.import/thoughtbubble.png-e6e935cb515ae138165c0d411d57931d.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mini_fridge.png-5eea7b67617f19b3d594e14408670c9c.stex"
+path="res://.import/bubble1.png-fb1208ae10c2a262cdc8c8ba8ebfea73.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://food/mini_fridge.png"
-dest_files=[ "res://.import/mini_fridge.png-5eea7b67617f19b3d594e14408670c9c.stex" ]
+source_file="res://thought_bubble/bubble1.png"
+dest_files=[ "res://.import/bubble1.png-fb1208ae10c2a262cdc8c8ba8ebfea73.stex" ]
 
 [params]
 

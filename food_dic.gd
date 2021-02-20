@@ -119,8 +119,8 @@ var colors = {
 }
 
 var food_holders = {
-	"pantry" : "res://food/mini_pantry.png",
-	"fridge" : "res://food/mini_fridge.png"
+	"pantry" : "res://food/pantryclue.png",
+	"fridge" : "res://food/fridgeclue.png"
 }
 
 var audio_clips = {
@@ -128,7 +128,7 @@ var audio_clips = {
 	"fridge" : "res://baby/vocals/Cold.wav",
 	"banana" : "res://baby/vocals/Banana.wav",
 	"pink" : "res://baby/vocals/Pink.wav",
-	"orange" : "res://baby/vocals/Orange.wav",
+	"orange" : "res://baby/vocals/orange (1).wav",
 	"white" : "res://baby/vocals/White.wav",
 	"yellow" : "res://baby/vocals/yell(ow).wav",
 	"blueberries" : "res://baby/vocals/berries_2.wav",

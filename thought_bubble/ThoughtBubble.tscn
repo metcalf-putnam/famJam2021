@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://thought_bubble/bub1.png" type="Texture" id=1]
+[ext_resource path="res://thought_bubble/bubble1.png" type="Texture" id=1]
 [ext_resource path="res://dishes/bowl.png" type="Texture" id=2]
-[ext_resource path="res://thought_bubble/bub3.png" type="Texture" id=3]
-[ext_resource path="res://thought_bubble/bub2.png" type="Texture" id=4]
+[ext_resource path="res://thought_bubble/thoughtbubble.png" type="Texture" id=3]
+[ext_resource path="res://thought_bubble/bubble2.png" type="Texture" id=4]
 [ext_resource path="res://thought_bubble/thought_bubble.gd" type="Script" id=5]
 [ext_resource path="res://baby/vocals/orange (1).wav" type="AudioStream" id=6]
 
@@ -248,24 +248,21 @@ anims/bub3 = SubResource( 3 )
 anims/reset = SubResource( 4 )
 
 [node name="Bub1" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -0.944931, 0.944939 )
 texture = ExtResource( 1 )
 
 [node name="Bub2" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -2.03895, -32.2712 )
 scale = Vector2( 1.06667, 1.06667 )
 texture = ExtResource( 4 )
 
 [node name="Bub3" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -5.60366, -94.1543 )
 texture = ExtResource( 3 )
 
 [node name="Clue" type="Sprite" parent="Bub3"]
-position = Vector2( 0.716003, -10.452 )
-scale = Vector2( 0.6, 0.6 )
+position = Vector2( 0.716003, -5.452 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
