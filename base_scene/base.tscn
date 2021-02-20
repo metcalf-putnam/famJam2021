@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://backgrounds/pantry.png" type="Texture" id=1]
 [ext_resource path="res://baby/baby.tscn" type="PackedScene" id=2]
@@ -19,6 +19,9 @@
 [ext_resource path="res://baby/vocals/human-boy-three-years-old-cry-003.wav" type="AudioStream" id=17]
 [ext_resource path="res://baby/vocals/Ohhh.wav" type="AudioStream" id=18]
 [ext_resource path="res://sounds/157766__enok123__keyboard-click.wav" type="AudioStream" id=19]
+[ext_resource path="res://title/KawaiiIcons_005.png" type="Texture" id=20]
+[ext_resource path="res://title/KawaiiIcons_004.png" type="Texture" id=21]
+[ext_resource path="res://baby/vocals/Noise.wav" type="AudioStream" id=22]
 
 [sub_resource type="Animation" id=1]
 resource_name = "eaten"
@@ -48,7 +51,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=2]
 resource_name = "game_over"
 length = 0.2
 tracks/0/type = "value"
@@ -76,8 +79,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=3]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Food:position")
@@ -128,7 +130,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0.75, 0.75 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "start_game"
 length = 0.3
 tracks/0/type = "value"
@@ -192,8 +194,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "thrown"
+[sub_resource type="Animation" id=5]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Food:position")
@@ -232,7 +233,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0.75, 0.75 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "title"
 length = 0.2
 tracks/0/type = "value"
@@ -332,7 +333,7 @@ tracks/7/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=7]
 resource_name = "title_first_start"
 length = 3.3
 step = 0.05
@@ -523,16 +524,16 @@ tracks/13/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=8]
 size = 175
 outline_size = 5
 font_data = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=9]
 size = 100
 font_data = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=10]
 size = 42
 font_data = ExtResource( 12 )
 
@@ -571,7 +572,7 @@ stream = ExtResource( 9 )
 volume_db = -10.0
 
 [node name="Food" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.210526 )
+self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 459.142, 446.795 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 10 )
@@ -579,16 +580,14 @@ texture = ExtResource( 10 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "title_first_start"
 anims/eaten = SubResource( 1 )
-anims/game_over = SubResource( 9 )
-anims/idle = SubResource( 2 )
-anims/start_game = SubResource( 7 )
-anims/thrown = SubResource( 3 )
-anims/title = SubResource( 8 )
-anims/title_first_start = SubResource( 10 )
+anims/game_over = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/start_game = SubResource( 4 )
+anims/thrown = SubResource( 5 )
+anims/title = SubResource( 6 )
+anims/title_first_start = SubResource( 7 )
 
 [node name="Title" type="ColorRect" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 900.0
@@ -610,7 +609,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Title/BabyText"]
 margin_right = 130.0
 margin_bottom = 256.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.760784, 0.588235, 0.996078, 1 )
 custom_colors/font_outline_modulate = Color( 0.254902, 0.164706, 0.380392, 1 )
 text = "B"
@@ -622,7 +621,7 @@ __meta__ = {
 margin_left = 134.0
 margin_right = 232.0
 margin_bottom = 256.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.760784, 0.588235, 0.996078, 1 )
 custom_colors/font_outline_modulate = Color( 0.254902, 0.164706, 0.380392, 1 )
 text = "A"
@@ -634,7 +633,7 @@ __meta__ = {
 margin_left = 236.0
 margin_right = 366.0
 margin_bottom = 256.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.760784, 0.588235, 0.996078, 1 )
 custom_colors/font_outline_modulate = Color( 0.254902, 0.164706, 0.380392, 1 )
 text = "B"
@@ -646,7 +645,7 @@ __meta__ = {
 margin_left = 370.0
 margin_right = 441.0
 margin_bottom = 256.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.760784, 0.588235, 0.996078, 1 )
 custom_colors/font_outline_modulate = Color( 0.254902, 0.164706, 0.380392, 1 )
 text = "Y"
@@ -664,7 +663,7 @@ margin_left = -61.4289
 margin_top = -92.5654
 margin_right = 100.571
 margin_bottom = 83.4346
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.568627, 0.415686, 0.776471, 1 )
 text = "talk"
 __meta__ = {
@@ -674,7 +673,6 @@ __meta__ = {
 [node name="Buttons" type="Node2D" parent="Title"]
 
 [node name="OptionButton" type="OptionButton" parent="Title/Buttons"]
-visible = false
 modulate = Color( 0.529412, 0.188235, 0.835294, 1 )
 anchor_left = 0.1
 anchor_right = 2.0
@@ -682,7 +680,7 @@ margin_left = 410.511
 margin_top = 412.655
 margin_right = 551.511
 margin_bottom = 480.655
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "normal"
 flat = true
@@ -691,13 +689,12 @@ __meta__ = {
 }
 
 [node name="StartButton" type="Button" parent="Title/Buttons"]
-visible = false
 modulate = Color( 0.529412, 0.188235, 0.835294, 1 )
 margin_left = 373.411
 margin_top = 484.655
 margin_right = 514.411
 margin_bottom = 552.655
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "start"
 icon = ExtResource( 13 )
@@ -705,6 +702,21 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SoundButton" type="TextureButton" parent="Title/Buttons"]
+margin_left = 18.4893
+margin_top = 12.7604
+margin_right = 82.4893
+margin_bottom = 76.7604
+toggle_mode = true
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Noise" type="AudioStreamPlayer" parent="Title/Buttons/SoundButton"]
+stream = ExtResource( 22 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Title"]
 stream = ExtResource( 18 )
@@ -720,7 +732,7 @@ margin_left = -302.381
 margin_top = -151.191
 margin_right = 297.619
 margin_bottom = -4.19052
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.345098, 0.176471, 0.356863, 1 )
 text = "So close!"
 align = 1
@@ -741,7 +753,7 @@ __meta__ = {
 modulate = Color( 0.529412, 0.188235, 0.835294, 1 )
 margin_right = 152.0
 margin_bottom = 68.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "menu"
 icon = ExtResource( 15 )
@@ -755,7 +767,7 @@ modulate = Color( 0.529412, 0.188235, 0.835294, 1 )
 margin_top = 72.0
 margin_right = 152.0
 margin_bottom = 140.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "replay"
 icon = ExtResource( 13 )
@@ -773,5 +785,6 @@ volume_db = -10.0
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="item_selected" from="Title/Buttons/OptionButton" to="." method="_on_OptionButton_item_selected"]
 [connection signal="pressed" from="Title/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="toggled" from="Title/Buttons/SoundButton" to="." method="_on_SoundButton_toggled"]
 [connection signal="pressed" from="GameOver/VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="GameOver/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]

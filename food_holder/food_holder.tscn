@@ -5,17 +5,17 @@
 [ext_resource path="res://food/food.tscn" type="PackedScene" id=3]
 [ext_resource path="res://font/IndieFlower-Regular.ttf" type="DynamicFontData" id=4]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.388235, 0.839216, 0.388235, 1 )
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 font_data = ExtResource( 4 )
 
@@ -33,9 +33,8 @@ margin_top = 593.0
 margin_right = 190.0
 margin_bottom = 600.0
 rect_rotation = -90.0
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
-max_value = 100.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 value = 100.0
 percent_visible = false
 __meta__ = {
@@ -47,7 +46,7 @@ margin_left = 143.052
 margin_top = 539.964
 margin_right = 243.051
 margin_bottom = 593.964
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "reload"
 __meta__ = {
 "_edit_use_anchors_": false
