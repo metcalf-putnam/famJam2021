@@ -124,8 +124,19 @@ func get_audio(word):
 	else:
 		return default_clue_audio
 
+func get_clue_texture_to_load(clue_name):
+	
+	if FoodDic.dishes.has(clue_name):
+		return FoodDic.dishes[clue_name]
+	if FoodDic.food_holders.has(clue_name):
+		return FoodDic.food_holders[clue_name]
+	if FoodDic.colors.has(clue_name):
+		return FoodDic.colors[clue_name]
+		
+	assert (false, "Clue not found in any dictionary")
+
 func populate_clue(clue_number, clue_name):
-	var texture = load(FoodDic.dishes.get(clue_name) or FoodDic.food_holders.get(clue_name) or FoodDic.colors.get(clue_name))
+	var texture = load(get_clue_texture_to_load(clue_name))
 	var sound = get_audio(clue_name)
 	
 	get_node("Thought" + str(clue_number)).set_clue(texture, sound)
