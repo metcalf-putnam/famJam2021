@@ -75,7 +75,6 @@ func _on_Timer_timeout():
 func _on_food_clicked(name):
 	for item in food:
 		if item["name"] == name:
-			print("is in me!")
 			food_count -= 1
 			continue
 	if food_count == 0:
