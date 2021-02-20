@@ -5,7 +5,6 @@ var normal_modulate = Color(1, 1, 1)
 
 func _ready():
 	$Bub3.rotation = $Bub3.rotation - rotation
-	color_base = load(FoodDic.colors["base_sprite_path"])
 	EventHub.connect("playback_speed_updated", self, "_on_playback_speed_updated")
 	
 
@@ -16,16 +15,8 @@ func reset():
 
 
 func set_clue(texture, sound):
-	if texture in FoodDic.colors:
-		set_color_clue(texture)
-	else:
-		$Bub3/Clue.texture = texture
+	$Bub3/Clue.texture = texture
 	$AudioStreamPlayer.stream = sound
-
-
-func set_color_clue(color):
-	$Bub3/Clue.texture = color_base
-	$Bub3/Clue.modulate = FoodDic.colors[color]
 
 
 func show_bubble(num):

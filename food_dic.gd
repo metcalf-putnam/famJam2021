@@ -110,13 +110,12 @@ var dishes = {
 
 
 var colors = {
-	"base_sprite_path" : "res://thought_bubble/color_splash.png",
-	"brown" : Color(0.54, 0.46, 0.29),
-	"pink" : Color(0.83, 0.49, 0.78),
-	"orange" : Color(0.95, 0.63, 0.12),
-	"blue" : Color(0.16, 0.49, 0.91),
-	"yellow" : Color(0.93, 0.92, 0.08),
-	"white" : Color(1,1,1)
+	"brown" : "res://colors/brownclue.png",
+	"red" : "res://colors/redclue.png",
+	"orange" : "res://colors/orangeclue.png",
+	"blue" : "res://colors/blueclue.png",
+	"yellow" : "res://colors/yellowclue.png",
+	"white" : "res://colors/whiteclue.png"
 }
 
 var food_holders = {
