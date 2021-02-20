@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ew.wav-86599b75e4139c9c41ae7f16d25d77ce.sample"
+
+[deps]
+
+source_file="res://baby/vocals/ew.wav"
+dest_files=[ "res://.import/ew.wav-86599b75e4139c9c41ae7f16d25d77ce.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

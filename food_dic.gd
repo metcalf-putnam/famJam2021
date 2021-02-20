@@ -5,6 +5,7 @@ var foods = [
 	{
 	"name" : "banana",
 	"sprite_path" : "res://food/banana.png",
+	"served_path" : "res://food/served_images/bananasonplate.png",
 	"food_holder" : "pantry",
 	"liquid" : false,
 	"dish" : "plate",
@@ -34,6 +35,7 @@ var foods = [
 	{
 	"name" : "oatmeal",
 	"sprite_path" : "res://food/oats.png",
+	"served_path" : "res://food/served_images/oarmealinbowl.png",
 	"food_holder" : "pantry",
 	"liquid" : false,
 	"dish" : "bowl",
@@ -72,6 +74,7 @@ var foods = [
 	{
 	"name" : "carrot",
 	"sprite_path" : "res://food/carrot.png",
+	"served_path" : "res://food/served_images/carrotsonplate.png",
 	"food_holder" : "fridge",
 	"liquid" : false,
 	"dish" : "plate",
@@ -133,5 +136,9 @@ var audio_clips = {
 	"muffin" : "res://baby/vocals/muffin_2.wav",
 	"water" : "res://baby/vocals/water.wav",
 	"yogurt" : "res://baby/vocals/yogurt.wav",
-	"carrot" : "res://baby/vocals/carrot.wav"
+	"carrot" : "res://baby/vocals/carrot.wav",
+	"red" : "res://baby/vocals/Red.wav",
+	"juice" : "res://baby/vocals/juice.wav",
+	"blue" : "res://baby/vocals/blue_maybe.wav",
+	"fruit snack" : "res://baby/vocals/treat_3.wav"
 }

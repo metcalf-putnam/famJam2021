@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/blue_maybe.wav-55938351eccd7c2abc5463665c030ecf.sample"
+
+[deps]
+
+source_file="res://baby/vocals/blue_maybe.wav"
+dest_files=[ "res://.import/blue_maybe.wav-55938351eccd7c2abc5463665c030ecf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
