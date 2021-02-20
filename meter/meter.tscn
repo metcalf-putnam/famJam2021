@@ -5,7 +5,7 @@
 [ext_resource path="res://sounds/zapsplat_human_heartbeat_single_26493.wav" type="AudioStream" id=3]
 [ext_resource path="res://font/IndieFlower-Regular.ttf" type="DynamicFontData" id=4]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.521569, 0.956863, 0.419608, 1 )
 corner_radius_top_left = 2
 corner_radius_top_right = 2
@@ -13,14 +13,14 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 corner_detail = 9
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.988235, 0.976471, 0.592157, 1 )
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "bonus_anim"
 length = 2.5
 tracks/0/type = "value"
@@ -84,7 +84,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/path = NodePath("../BonusText:visible")
@@ -111,7 +111,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "value_change"
 length = 1.5
 tracks/0/type = "value"
@@ -206,7 +206,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=7]
 size = 32
 font_data = ExtResource( 4 )
 
@@ -217,8 +217,8 @@ margin_left = -200.0
 margin_top = 16.0
 margin_right = 125.0
 margin_bottom = 30.0
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 value = 60.0
 percent_visible = false
 script = ExtResource( 1 )
@@ -233,9 +233,9 @@ texture = ExtResource( 2 )
 
 [node name="ValueAnim" type="AnimationPlayer" parent="Heart"]
 autoplay = "idle"
-anims/bonus_anim = SubResource( 4 )
-anims/idle = SubResource( 5 )
-anims/value_change = SubResource( 7 )
+anims/bonus_anim = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/value_change = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/beat = SubResource( 6 )
@@ -247,13 +247,12 @@ volume_db = -10.0
 [node name="Tween" type="Tween" parent="."]
 
 [node name="BonusText" type="Label" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 100.067
 margin_top = 31.1632
 margin_right = 254.067
 margin_bottom = 79.1632
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 7 )
 text = "time bonus!"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -266,7 +265,7 @@ margin_top = 28.9867
 margin_right = 298.221
 margin_bottom = 76.9867
 rect_scale = Vector2( 2, 2 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 7 )
 text = "+33"
 __meta__ = {
 "_edit_use_anchors_": false
