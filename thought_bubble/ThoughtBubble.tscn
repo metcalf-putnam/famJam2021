@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://thought_bubble/bub1.png" type="Texture" id=1]
 [ext_resource path="res://dishes/bowl.png" type="Texture" id=2]
 [ext_resource path="res://thought_bubble/bub3.png" type="Texture" id=3]
 [ext_resource path="res://thought_bubble/bub2.png" type="Texture" id=4]
 [ext_resource path="res://thought_bubble/thought_bubble.gd" type="Script" id=5]
+[ext_resource path="res://baby/vocals/orange (1).wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "bub1"
@@ -268,3 +269,5 @@ scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+mix_target = 2

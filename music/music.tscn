@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://music/Arpegio2.ogg" type="AudioStream" id=1]
+[ext_resource path="res://music/Arpegeo2.ogg" type="AudioStream" id=1]
 [ext_resource path="res://music/music.gd" type="Script" id=2]
-[ext_resource path="res://music/Arpegios.ogg" type="AudioStream" id=3]
-[ext_resource path="res://music/Slow Wood Flute.ogg" type="AudioStream" id=4]
-[ext_resource path="res://music/Noisey.ogg" type="AudioStream" id=5]
+[ext_resource path="res://music/Wood Sound.ogg" type="AudioStream" id=3]
+[ext_resource path="res://music/Noisey1.ogg" type="AudioStream" id=4]
+[ext_resource path="res://music/Arpegeo1.ogg" type="AudioStream" id=5]
 [ext_resource path="res://music/Blusey1.ogg" type="AudioStream" id=6]
 
 [node name="Music" type="Node"]
@@ -15,12 +15,12 @@ script = ExtResource( 2 )
 [node name="Players" type="Node" parent="."]
 
 [node name="Title" type="AudioStreamPlayer" parent="Players"]
-stream = ExtResource( 1 )
+stream = ExtResource( 5 )
 volume_db = -15.0
 bus = "Music"
 
 [node name="Happy" type="AudioStreamPlayer" parent="Players"]
-stream = ExtResource( 3 )
+stream = ExtResource( 1 )
 bus = "Music"
 
 [node name="Sad" type="AudioStreamPlayer" parent="Players"]
@@ -28,11 +28,11 @@ stream = ExtResource( 6 )
 bus = "Music"
 
 [node name="Upset" type="AudioStreamPlayer" parent="Players"]
-stream = ExtResource( 4 )
+stream = ExtResource( 3 )
 bus = "Music"
 
 [node name="Angry" type="AudioStreamPlayer" parent="Players"]
-stream = ExtResource( 5 )
+stream = ExtResource( 4 )
 volume_db = -10.0
 bus = "Music"
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
