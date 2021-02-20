@@ -1,5 +1,6 @@
 extends Node2D
 var sound : int
+var music : int
 
 enum Difficulty {EASY, NORMAL, HARD, HELLISH}
 var selected_difficulty = Difficulty.NORMAL
@@ -8,7 +9,8 @@ const lose_text = "So close!"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	sound = AudioServer.get_bus_index("Master")
+	sound = AudioServer.get_bus_index("sfx")
+	music = AudioServer.get_bus_index("Music")
 	$Food.texture = null
 	add_difficulties()
 	initialize_kitchen()
@@ -78,6 +80,8 @@ func _on_StartButton_pressed():
 	initialize_meter()
 	$AnimationPlayer.play("start_game")
 	refresh_objects()
+	$Music.title = false
+	$Music.update_song()
 
 
 func _on_OptionButton_item_selected(index):
@@ -111,8 +115,18 @@ func _on_game_over(boolean):
 
 func _on_MenuButton_pressed():
 	$AnimationPlayer.play("title")
+	$Music.play_title()
 
 
 func _on_SoundButton_toggled(button_pressed):
 	AudioServer.set_bus_mute(sound, button_pressed)
-	$Title/Buttons/SoundButton/Noise.play()
+	$Title/Buttons/Settings/SoundButton/Noise.play()
+
+
+func _on_title_end():
+	$Music.play_title()
+
+
+func _on_MusicButton_toggled(button_pressed):
+	AudioServer.set_bus_mute(music, button_pressed)
+	$Title/Buttons/Settings/MusicButton/Music.play()

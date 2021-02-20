@@ -27,6 +27,7 @@ func add_food_type(name, preloaded_image):
 
 func _on_Button_pressed():
 	reload()
+	$Restock.play()
 	$Button.disabled = true
 	$ProgressBar.value = 0
 	$ProgressBar.visible = true
