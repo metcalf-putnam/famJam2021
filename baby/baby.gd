@@ -80,26 +80,39 @@ func reset_clues():
 	bubble_current = 1
 
 
-func think_about_food():
-	var texture = load(chosen_food["sprite_path"])
- 
+func think_about_food(): 
 	# TODO: make this a bit random which clue goes in which slot
 	# and, like, if you have fridge + sippy, that's a bit annoying, since all 
 	# things that go into sippy cup are in the fridge
-	var chosen_dish = chosen_food["dish"]
-	if FoodDic.dishes.has(chosen_dish):
-		populate_clue(1, load(FoodDic.dishes[chosen_dish]), get_audio(chosen_dish))
 	
-	var food_holder = chosen_food["food_holder"]
-	if FoodDic.food_holders.has(food_holder):
-		populate_clue(1, load(FoodDic.food_holders[food_holder]), get_audio(food_holder))
-		
-	var chosen_color = chosen_food["color"]
-	if FoodDic.colors.has(chosen_color):
-		populate_clue(2, chosen_color, get_audio(chosen_color))
-		
-	populate_clue(3, texture, get_audio(chosen_food["name"]))
+	var clues = [chosen_food["dish"], chosen_food["food_holder"], chosen_food["color"]]
+	
+	clues = remove_duplicate_clues(clues)
+	
+	var array_loc = rng.randi_range(0, len(clues) - 1)
+	
+	var clue_name = clues[array_loc]
+	populate_clue(1, clue_name)
+	clues.remove(clue_name)
+	
+	array_loc = rng.randi_range(0, len(clues) - 1)
+	
+	clue_name = clues[array_loc]
+	populate_clue(2, clue_name)
+	
+	var texture = load(chosen_food["sprite_path"])
+	$Thought3.set_clue(texture, get_audio(chosen_food["name"]))
 
+func remove_duplicate_clues(clues):
+	if clues.has("sippy cup") and clues.has("fridge"):
+		if rng.randi() % 2 == 0:
+			clues.remove("sippy cup")
+		else:
+			clues.remove("fridge")
+		
+	return clues
+	
+		
 func get_audio(word):
 	var audio 
 	
@@ -111,7 +124,10 @@ func get_audio(word):
 	else:
 		return default_clue_audio
 
-func populate_clue(clue_number, texture, sound):
+func populate_clue(clue_number, clue_name):
+	var texture = load(FoodDic.dishes.get(clue_name) or FoodDic.food_holders.get(clue_name) or FoodDic.colors.get(clue_name))
+	var sound = get_audio(clue_name)
+	
 	get_node("Thought" + str(clue_number)).set_clue(texture, sound)
 
 
