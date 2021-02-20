@@ -130,6 +130,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=7]
 resource_name = "start_game"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Title:modulate")
 tracks/0/interp = 1
@@ -137,7 +138,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -173,7 +174,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.8 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
@@ -561,15 +562,16 @@ position = Vector2( -61.9822, -1.84549 )
 
 [node name="ProgressBar" parent="." instance=ExtResource( 7 )]
 margin_left = 285.43
-margin_top = 21.1821
+margin_top = 29.1821
 margin_right = 610.43
-margin_bottom = 35.1821
+margin_bottom = 43.1821
 
 [node name="FoodClicked" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -10.0
 
 [node name="Food" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.210526 )
 position = Vector2( 459.142, 446.795 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 10 )
@@ -585,6 +587,8 @@ anims/title = SubResource( 8 )
 anims/title_first_start = SubResource( 10 )
 
 [node name="Title" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 900.0
@@ -670,6 +674,7 @@ __meta__ = {
 [node name="Buttons" type="Node2D" parent="Title"]
 
 [node name="OptionButton" type="OptionButton" parent="Title/Buttons"]
+visible = false
 modulate = Color( 0.529412, 0.188235, 0.835294, 1 )
 anchor_left = 0.1
 anchor_right = 2.0
@@ -686,6 +691,7 @@ __meta__ = {
 }
 
 [node name="StartButton" type="Button" parent="Title/Buttons"]
+visible = false
 modulate = Color( 0.529412, 0.188235, 0.835294, 1 )
 margin_left = 373.411
 margin_top = 484.655

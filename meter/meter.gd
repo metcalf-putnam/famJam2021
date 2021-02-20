@@ -13,6 +13,10 @@ var sad_speed := 1.25
 var upset_speed := 1.75
 var mad_speed := 2.25
 
+var change_text_offset := Vector2(0, 30)
+var positive_color = Color(0.04,0.81,0.2)  
+var negative_color = Color(0.82,0.15,0.14)
+
 
 func start():
 	$AnimationPlayer.play("beat")	
@@ -65,10 +69,20 @@ func update_playback_speed(new_value):
 	
 	EventHub.emit_signal("playback_speed_updated", new_value)
 	$AnimationPlayer.playback_speed = new_value
-	
+
 
 func change_value(amount : float):
 	value += amount
+	$Change.rect_position = $Heart.position + change_text_offset
+	var prefix = ""
+	if amount > 0:
+		prefix = "+"
+		$Change.self_modulate = positive_color
+	else:
+		$Change.self_modulate = negative_color
+		
+	$Change.text = prefix + str(amount)
+	$Heart/ValueAnim.play("value_change")
 	$Heart.position.x = rect_size.x * value / 100 # TODO: make this tween?
 	if value >= 100 or value <= 0:
 		var win_bool = value >= 100

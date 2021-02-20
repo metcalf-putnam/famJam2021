@@ -1,11 +1,169 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://meter/meter.gd" type="Script" id=1]
 [ext_resource path="res://meter/heartupset.png" type="Texture" id=2]
 [ext_resource path="res://sounds/zapsplat_human_heartbeat_single_26493.wav" type="AudioStream" id=3]
+[ext_resource path="res://font/IndieFlower-Regular.ttf" type="DynamicFontData" id=4]
 
-[sub_resource type="Animation" id=1]
-resource_name = "beat"
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.521569, 0.956863, 0.419608, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 9
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.988235, 0.976471, 0.592157, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Animation" id=4]
+resource_name = "bonus_anim"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../BonusText:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../BonusText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Change:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Change:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.9, 2.3 ),
+"transitions": PoolRealArray( 1, 3.86374 ),
+"update": 0,
+"values": [ Vector2( 0.25, 0.25 ), Vector2( 2, 2 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Change:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.9, 1.9, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 0.420448 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../BonusText:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Change:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "value_change"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../BonusText:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Change:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Change:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 3.86374 ),
+"update": 0,
+"values": [ Vector2( 0.25, 0.25 ), Vector2( 2, 2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Change:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 0.420448 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Heart:scale")
@@ -48,12 +206,19 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 )
 }
 
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 4 )
+
 [node name="ProgressBar" type="ProgressBar"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -200.0
+margin_top = 16.0
 margin_right = 125.0
-margin_bottom = 14.0
+margin_bottom = 30.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
 value = 60.0
 percent_visible = false
 script = ExtResource( 1 )
@@ -66,9 +231,43 @@ position = Vector2( 166.28, 9.52441 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 
+[node name="ValueAnim" type="AnimationPlayer" parent="Heart"]
+autoplay = "idle"
+anims/bonus_anim = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/value_change = SubResource( 7 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/beat = SubResource( 1 )
+anims/beat = SubResource( 6 )
 
 [node name="Heartbeat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -10.0
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="BonusText" type="Label" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 100.067
+margin_top = 31.1632
+margin_right = 254.067
+margin_bottom = 79.1632
+custom_fonts/font = SubResource( 1 )
+text = "time bonus!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Change" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 144.221
+margin_top = 28.9867
+margin_right = 298.221
+margin_bottom = 76.9867
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 1 )
+text = "+33"
+__meta__ = {
+"_edit_use_anchors_": false
+}

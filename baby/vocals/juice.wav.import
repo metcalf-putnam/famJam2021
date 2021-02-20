@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/juice.wav-e2a71832dca41997e2774406bcd32c64.sample"
+
+[deps]
+
+source_file="res://baby/vocals/juice.wav"
+dest_files=[ "res://.import/juice.wav-e2a71832dca41997e2774406bcd32c64.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
