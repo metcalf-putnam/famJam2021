@@ -139,14 +139,9 @@ func get_clue_texture_to_load(clue_name):
 
 func populate_clue(clue_number, clue_name):
 	var texture_to_load = get_clue_texture_to_load(clue_name)
-	var node = get_node("Thought" + str(clue_number))
-	var sound = get_audio(clue_name)
-	
-	if texture_to_load is String:
-		var texture = load(texture_to_load)
-		node.set_clue(texture, sound)
-	else:
-		node.set_clue(clue_name, sound)
+	var sound = get_audio(clue_name)	
+	var texture = load(texture_to_load)
+	get_node("Thought" + str(clue_number)).set_clue(texture, sound)
 
 
 func _on_food_clicked(food_name):
