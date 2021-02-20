@@ -93,7 +93,7 @@ func think_about_food():
 	
 	var clue_name = clues[array_loc]
 	populate_clue(1, clue_name)
-	clues.remove(clue_name)
+	clues.erase(clue_name)
 	
 	array_loc = rng.randi_range(0, len(clues) - 1)
 	
@@ -104,15 +104,15 @@ func think_about_food():
 	$Thought3.set_clue(texture, get_audio(chosen_food["name"]))
 
 func remove_duplicate_clues(clues):
-	if clues.has("sippy cup") and clues.has("fridge"):
+	if clues.has("sippy") and clues.has("fridge"):
 		if rng.randi() % 2 == 0:
-			clues.remove("sippy cup")
+			clues.erase("sippy")
 		else:
-			clues.remove("fridge")
+			clues.erase("fridge")
 		
 	return clues
 	
-		
+	
 func get_audio(word):
 	var audio 
 	
@@ -127,19 +127,26 @@ func get_audio(word):
 func get_clue_texture_to_load(clue_name):
 	
 	if FoodDic.dishes.has(clue_name):
-		return FoodDic.dishes[clue_name]
+		return FoodDic.dishes.get(clue_name)
+		
 	if FoodDic.food_holders.has(clue_name):
-		return FoodDic.food_holders[clue_name]
+		return FoodDic.food_holders.get(clue_name)
+		
 	if FoodDic.colors.has(clue_name):
-		return FoodDic.colors[clue_name]
+		return FoodDic.colors.get(clue_name)
 		
 	assert (false, "Clue not found in any dictionary")
 
 func populate_clue(clue_number, clue_name):
-	var texture = load(get_clue_texture_to_load(clue_name))
-	var sound = get_audio(clue_name)
+	var texture_to_load = get_clue_texture_to_load(clue_name)
+	var node = get_node("Thought" + str(clue_number))
 	
-	get_node("Thought" + str(clue_number)).set_clue(texture, sound)
+	if texture_to_load is String:
+		var texture = load(texture_to_load)
+		var sound = get_audio(clue_name)	
+		node.set_clue(texture, sound)
+	else:
+		node.set_color_clue(clue_name)
 
 
 func _on_food_clicked(food_name):
