@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://backgrounds/pantry.png" type="Texture" id=1]
 [ext_resource path="res://baby/baby.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://title/KawaiiIcons_005.png" type="Texture" id=20]
 [ext_resource path="res://title/KawaiiIcons_004.png" type="Texture" id=21]
 [ext_resource path="res://baby/vocals/Noise.wav" type="AudioStream" id=22]
+[ext_resource path="res://music/music.tscn" type="PackedScene" id=23]
 
 [sub_resource type="Animation" id=1]
 resource_name = "eaten"
@@ -523,6 +524,20 @@ tracks/13/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/14/type = "method"
+tracks/14/path = NodePath(".")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 3.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_title_end"
+} ]
+}
 
 [sub_resource type="DynamicFont" id=8]
 size = 175
@@ -671,6 +686,7 @@ __meta__ = {
 }
 
 [node name="Buttons" type="Node2D" parent="Title"]
+visible = false
 
 [node name="OptionButton" type="OptionButton" parent="Title/Buttons"]
 modulate = Color( 0.529412, 0.188235, 0.835294, 1 )
@@ -782,6 +798,8 @@ stream = ExtResource( 16 )
 [node name="Failure" type="AudioStreamPlayer" parent="GameOver"]
 stream = ExtResource( 17 )
 volume_db = -10.0
+
+[node name="Music" parent="." instance=ExtResource( 23 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="item_selected" from="Title/Buttons/OptionButton" to="." method="_on_OptionButton_item_selected"]
 [connection signal="pressed" from="Title/Buttons/StartButton" to="." method="_on_StartButton_pressed"]

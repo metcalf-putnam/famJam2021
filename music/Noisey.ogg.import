@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Noisey.ogg-cee385ed63d41f2796d88c2f8d604333.oggstr"
+
+[deps]
+
+source_file="res://music/Noisey.ogg"
+dest_files=[ "res://.import/Noisey.ogg-cee385ed63d41f2796d88c2f8d604333.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

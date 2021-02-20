@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Arpegio2.ogg-0368bbe2974394fb2b104c9b266fb4c3.oggstr"
+
+[deps]
+
+source_file="res://music/Arpegio2.ogg"
+dest_files=[ "res://.import/Arpegio2.ogg-0368bbe2974394fb2b104c9b266fb4c3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
