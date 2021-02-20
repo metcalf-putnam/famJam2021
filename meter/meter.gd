@@ -18,7 +18,8 @@ const clue_level_multipliers = {
 	2: 3,
 	3: 2,
 	4: 1,
-	5: 1
+	5: 1,
+	6: 1
 }
 
 const happiness_level_multipliers = {
