@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/brown.wav-02372332629ea397d35b32af8b68871c.sample"
+
+[deps]
+
+source_file="res://baby/vocals/brown.wav"
+dest_files=[ "res://.import/brown.wav-02372332629ea397d35b32af8b68871c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

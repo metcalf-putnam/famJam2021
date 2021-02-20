@@ -1,5 +1,6 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
+[ext_resource path="res://baby/vocals/music_2.wav" type="AudioStream" id=1]
 [ext_resource path="res://baby/baby.tscn" type="PackedScene" id=2]
 [ext_resource path="res://food_holder/food_holder.tscn" type="PackedScene" id=3]
 [ext_resource path="res://backgrounds/fridge.png" type="Texture" id=4]
@@ -752,6 +753,8 @@ __meta__ = {
 }
 
 [node name="Music" type="AudioStreamPlayer" parent="Title/Buttons/Settings/MusicButton"]
+stream = ExtResource( 1 )
+volume_db = 10.0
 bus = "Music"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Title"]

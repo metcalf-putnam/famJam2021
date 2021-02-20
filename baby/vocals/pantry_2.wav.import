@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pantry_2.wav-da4d9f66b56ded09116f0d34cb739f2f.sample"
+
+[deps]
+
+source_file="res://baby/vocals/pantry_2.wav"
+dest_files=[ "res://.import/pantry_2.wav-da4d9f66b56ded09116f0d34cb739f2f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -139,5 +139,14 @@ var audio_clips = {
 	"red" : "res://baby/vocals/Red.wav",
 	"juice" : "res://baby/vocals/juice.wav",
 	"blue" : "res://baby/vocals/blue_maybe.wav",
-	"fruit snack" : "res://baby/vocals/treat_3.wav"
+	"fruit snack" : "res://baby/vocals/treat_3.wav",
+	"plate" : "res://baby/vocals/plate_2.wav",
+	"bowl" : "res://baby/vocals/bowl_2.wav",
+	"sippy" : "res://baby/vocals/cup.wav",
+	"pantry" : "res://baby/vocals/pantry_2.wav",
+	"oatmeal" : "res://baby/vocals/oatmeal.wav",
+	"macNCheese" : "res://baby/vocals/mac_n_cheese.wav",
+	"rice" : "res://baby/vocals/rice_2.wav",
+	"cookie" : "res://baby/vocals/cookie.wav",
+	"brown" : "res://baby/vocals/brown.wav"
 }

@@ -256,6 +256,7 @@ bus = "sfx"
 [node name="Tween" type="Tween" parent="."]
 
 [node name="BonusText" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = -72.7579
 margin_top = 31.4486
 margin_right = 440.242
