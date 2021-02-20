@@ -243,6 +243,7 @@ anims/beat = SubResource( 6 )
 [node name="Heartbeat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -10.0
+bus = "sfx"
 
 [node name="Tween" type="Tween" parent="."]
 

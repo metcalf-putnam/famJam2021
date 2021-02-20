@@ -985,5 +985,6 @@ parameters/playback = SubResource( 19 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
+bus = "sfx"
 
 [node name="Word" type="AudioStreamPlayer" parent="."]
