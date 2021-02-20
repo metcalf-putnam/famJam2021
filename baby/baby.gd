@@ -189,7 +189,7 @@ func get_angry():
 func _on_heart_beat():
 	if state != State.HUNGRY:
 		return
-
+	print("clue current: ", clue_current)
 	if bubble_current >= 4:
 		bubble_current = 1
 		clue_current += 1

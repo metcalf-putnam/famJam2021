@@ -15,8 +15,8 @@ var mad_speed := 2.25
 
 const clue_level_multipliers = {
 	1: 3, #delayed by one step, since there will only be one beat after clue 1 is shown before clue level 2 begins
-	2: 3,
-	3: 2,
+	2: 2,
+	3: 1,
 	4: 1,
 	5: 1,
 	6: 1
@@ -99,7 +99,11 @@ func change_value(amount : float, clue_level : int):
 		$Change.self_modulate = negative_color
 		
 	$Change.text = prefix + str(amount)
-	$Heart/ValueAnim.play("value_change")
+	
+	if clue_level_multipliers[clue_level] > 1 and amount > 0:
+		$Heart/ValueAnim.play("bonus_anim")
+	else:
+		$Heart/ValueAnim.play("value_change")
 	$Heart.position.x = rect_size.x * value / 100 # TODO: make this tween?
 	if value >= 100 or value <= 0:
 		var win_bool = value >= 100
