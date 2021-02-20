@@ -13,6 +13,21 @@ var sad_speed := 1.25
 var upset_speed := 1.75
 var mad_speed := 2.25
 
+const clue_level_multipliers = {
+	1: 3, #delayed by one step, since there will only be one beat after clue 1 is shown before clue level 2 begins
+	2: 3,
+	3: 2,
+	4: 1,
+	5: 1
+}
+
+const happiness_level_multipliers = {
+	Global.Mood.ANGRY: 1,
+	Global.Mood.UPSET: 1,
+	Global.Mood.SAD: 1.2,
+	Global.Mood.HAPPY: 1.5
+}
+
 var change_text_offset := Vector2(0, 30)
 var positive_color = Color(0.04,0.81,0.2)  
 var negative_color = Color(0.82,0.15,0.14)
@@ -38,9 +53,9 @@ func beat():
 	EventHub.emit_signal("heart_beat")
 
 
-func _on_patience_changed(amount):
+func _on_patience_changed(amount, clue_level):
 	# TODO: add animation effect and sound here
-	change_value(amount)
+	change_value(amount, clue_level)
 	_update_heart_sprite()
 
 
@@ -71,8 +86,8 @@ func update_playback_speed(new_value):
 	$AnimationPlayer.playback_speed = new_value
 
 
-func change_value(amount : float):
-	value += amount
+func change_value(amount : float, clue_level : int):
+	value += get_adjusted_value(amount, clue_level)
 	$Change.rect_position = $Heart.position + change_text_offset
 	var prefix = ""
 	if amount > 0:
@@ -88,3 +103,26 @@ func change_value(amount : float):
 		var win_bool = value >= 100
 		EventHub.emit_signal("game_over", win_bool)
 		$AnimationPlayer.stop()
+
+
+func get_adjusted_value(amount, clue_level):
+	if amount >= 0:
+		return get_adjusted_positive_value(amount, clue_level)
+	
+	return get_adjusted_negative_value(amount, clue_level)
+
+
+func get_adjusted_positive_value(amount, clue_level : int):
+	var adjusted_value = amount
+	
+	adjusted_value *= clue_level_multipliers[clue_level]
+	adjusted_value *= happiness_level_multipliers[Global.mood]
+	
+	return adjusted_value
+
+
+func get_adjusted_negative_value(amount, clue_level):	
+	var adjusted_value = amount
+	
+	return adjusted_value
+

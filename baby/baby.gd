@@ -171,11 +171,11 @@ func eat_food():
 func _on_done_thinking():
 	if food_accepted:
 		EventHub.emit_signal("food_accepted") # may not keep these accepted/declined signals
-		EventHub.emit_signal("patience_changed", accepted_change)
+		EventHub.emit_signal("patience_changed", accepted_change, clue_current)
 		eat_food()
 	else:
 		EventHub.emit_signal("food_declined") 
-		EventHub.emit_signal("patience_changed", declined_change)
+		EventHub.emit_signal("patience_changed", declined_change, clue_current)
 		state = State.THROW
 		animationState.travel("throw_food")
 	update_head()
@@ -186,7 +186,7 @@ func get_angry():
 	Global.active = false
 	update_head()
 	EventHub.emit_signal("tantrum")
-	EventHub.emit_signal("patience_changed", tantrum_change)
+	EventHub.emit_signal("patience_changed", tantrum_change, clue_current)
 	reset_clues()
 	animationState.travel("tantrum")
 
