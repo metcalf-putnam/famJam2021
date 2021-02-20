@@ -89,6 +89,7 @@ func update_playback_speed(new_value):
 
 func change_value(amount : float, clue_level : int):
 	value += get_adjusted_value(amount, clue_level)
+	print("meter value: ", value)
 	$Change.rect_position = $Heart.position + change_text_offset
 	var prefix = ""
 	if amount > 0:
@@ -122,6 +123,7 @@ func get_adjusted_positive_value(amount, clue_level : int):
 	return adjusted_value
 
 
+# warning-ignore:unused_argument
 func get_adjusted_negative_value(amount, clue_level):	
 	var adjusted_value = amount
 	
