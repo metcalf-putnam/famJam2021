@@ -78,6 +78,8 @@ func _on_StartButton_pressed():
 	initialize_meter()
 	$AnimationPlayer.play("start_game")
 	refresh_objects()
+	$Music.title = false
+	$Music.update_song()
 
 
 func _on_OptionButton_item_selected(index):
@@ -111,8 +113,13 @@ func _on_game_over(boolean):
 
 func _on_MenuButton_pressed():
 	$AnimationPlayer.play("title")
+	$Music.play_title()
 
 
 func _on_SoundButton_toggled(button_pressed):
 	AudioServer.set_bus_mute(sound, button_pressed)
 	$Title/Buttons/SoundButton/Noise.play()
+
+
+func _on_title_end():
+	$Music.play_title()
