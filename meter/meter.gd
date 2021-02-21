@@ -21,7 +21,8 @@ const clue_level_multipliers = {
 	2: 2,
 	3: 1,
 	4: 1,
-	5: 1
+	5: 1,
+	6: 1
 }
 
 const happiness_level_multipliers = {
@@ -37,11 +38,13 @@ var negative_color = Color(0.82,0.15,0.14)
 
 
 func start():
+	print ("started")
 	$AnimationPlayer.play("beat")	
 
 
 func set_value(value_in):
 	value = value_in
+	current_value_target = value
 	$Heart.position.x = rect_size.x * value / 100 # TODO: make this tween?
 	_update_heart_sprite()
 
