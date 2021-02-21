@@ -11,6 +11,7 @@ var bubble_current := 1
 var animationState : AnimationNodeStateMachinePlayback
 var food_accepted
 var game_over = false
+var fed_wrong_food = false
 
 var angry_head = preload("res://baby/baby_parts/angryhead.png")
 var frowning_head = preload("res://baby/baby_parts/frowninghead.png")
@@ -76,6 +77,7 @@ func reset_clues():
 	$Thought1.reset()
 	$Thought2.reset()
 	$Thought3.reset()
+	fed_wrong_food = false
 	clue_current = 1
 	bubble_current = 1
 
@@ -170,13 +172,15 @@ func _on_done_thinking():
 	
 	if food_accepted:
 		EventHub.emit_signal("food_accepted") # may not keep these accepted/declined signals
-		EventHub.emit_signal("patience_changed", accepted_change, corrected_clue_num)
+		EventHub.emit_signal("patience_changed", accepted_change, corrected_clue_num, fed_wrong_food)
 		eat_food()
 	else:
 		EventHub.emit_signal("food_declined") 
-		EventHub.emit_signal("patience_changed", declined_change, corrected_clue_num)
+		EventHub.emit_signal("patience_changed", declined_change, corrected_clue_num, fed_wrong_food)
 		state = State.THROW
 		animationState.travel("throw_food")
+		fed_wrong_food = true
+	
 	update_head()
 
 

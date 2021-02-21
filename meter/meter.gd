@@ -60,9 +60,9 @@ func beat():
 	EventHub.emit_signal("heart_beat")
 
 
-func _on_patience_changed(amount, clue_level):
+func _on_patience_changed(amount, clue_level, fed_wrong_value):
 	# TODO: add animation effect and sound here
-	change_value(amount, clue_level)
+	change_value(amount, clue_level, fed_wrong_value)
 	_update_heart_sprite()
 
 
@@ -93,8 +93,9 @@ func update_playback_speed(new_value):
 	$AnimationPlayer.playback_speed = new_value
 
 
-func change_value(amount : float, clue_level : int):
-	var adjustedAmount = get_adjusted_value(amount, clue_level)
+func change_value(amount : float, clue_level : int, fed_wrong_food : bool):
+	var adjustedAmount = get_adjusted_value(amount, clue_level, fed_wrong_food)
+	
 	$Change.rect_position = $Heart.position + change_text_offset
 	var prefix = ""
 	if amount > 0:
@@ -105,7 +106,7 @@ func change_value(amount : float, clue_level : int):
 		
 	$Change.text = prefix + str(amount)
 	
-	if clue_level_multipliers[clue_level] > 1 and amount > 0:
+	if clue_level_multipliers[clue_level] > 1 and amount > 0 and not fed_wrong_food:
 		$Heart/ValueAnim.play("bonus_anim")
 	else:
 		$Heart/ValueAnim.play("value_change")
@@ -125,11 +126,15 @@ func change_value(amount : float, clue_level : int):
 		$AnimationPlayer.stop()
 
 
-func get_adjusted_value(amount, clue_level):
-	if amount >= 0:
+func get_adjusted_value(amount, clue_level, fed_wrong_food):
+	
+	if amount >= 0 and not fed_wrong_food:
 		return get_adjusted_positive_value(amount, clue_level)
 	
-	return get_adjusted_negative_value(amount, clue_level)
+	if amount < 0:
+		return get_adjusted_negative_value(amount, clue_level)
+	
+	return amount
 
 
 func get_adjusted_positive_value(amount, clue_level : int):
