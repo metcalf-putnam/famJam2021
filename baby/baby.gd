@@ -189,7 +189,7 @@ func get_angry():
 	Global.active = false
 	update_head()
 	EventHub.emit_signal("tantrum")
-	EventHub.emit_signal("patience_changed", tantrum_change, clue_current)
+	EventHub.emit_signal("patience_changed", tantrum_change, clue_current, fed_wrong_food)
 	reset_clues()
 	animationState.travel("tantrum")
 
