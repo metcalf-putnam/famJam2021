@@ -6,6 +6,8 @@ enum Difficulty {EASY, NORMAL, HARD, HELLISH}
 var selected_difficulty = Difficulty.NORMAL
 const win_text = "Success!"
 const lose_text = "So close!"
+var beats := 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +20,8 @@ func _ready():
 	EventHub.connect("food_clicked", self, "_on_food_clicked")
 	EventHub.connect("food_accepted", self, "_on_food_accepted")
 	EventHub.connect("food_declined", self, "_on_food_declined")
+	EventHub.connect("heart_beat", self, "_on_heart_beat")
+	_on_OptionButton_item_selected(selected_difficulty)
 
 
 func add_difficulties():
@@ -82,11 +86,18 @@ func _on_StartButton_pressed():
 	refresh_objects()
 	$Music.title = false
 	$Music.update_song()
+	beats = 0
 
 
 func _on_OptionButton_item_selected(index):
 	selected_difficulty = index
 	initialize_meter()
+	var score = Global.get_high_score(selected_difficulty)
+	if score:
+		$Title/Buttons/HighScore/Value.text = str(score)
+		$Title/Buttons/HighScore.visible = true
+	else:
+		$Title/Buttons/HighScore.visible = false
 
 
 func initialize_meter():
@@ -103,14 +114,25 @@ func initialize_meter():
 			# TODO: make audio only clues?
 
 func _on_game_over(boolean):
+
 	if boolean:
 		$GameOver/Label.text = win_text
+		$GameOver/HBoxContainer/Beats.text = str(beats)
+		$GameOver/HBoxContainer/Beats.visible = true
+		$GameOver/HBoxContainer/Beats/label2.text = "Difficulty: " + $Title/Buttons/OptionButton.text
 		$GameOver/Success.play()
+		log_score(beats)
 	else: 
+		$GameOver/HBoxContainer/Beats.visible = false
 		$GameOver/Label.text = lose_text
 		$GameOver/Failure.play()
-		pass # TODO: failure noises?
 	$AnimationPlayer.play("game_over")
+
+
+func log_score(heartbeats):
+	var score = Global.get_high_score(selected_difficulty)
+	if score and score > heartbeats or !score:
+		Global.save(selected_difficulty, heartbeats)
 
 
 func _on_MenuButton_pressed():
@@ -130,3 +152,7 @@ func _on_title_end():
 func _on_MusicButton_toggled(button_pressed):
 	AudioServer.set_bus_mute(music, button_pressed)
 	$Title/Buttons/Settings/MusicButton/Music.play()
+
+
+func _on_heart_beat():
+	beats += 1
