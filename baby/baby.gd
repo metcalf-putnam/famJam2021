@@ -215,7 +215,7 @@ func _on_heart_beat():
 		bubble_current = 1
 		clue_current += 1
 
-	if clue_current == 6:
+	if clue_current == 7:
 		if Global.lose_condition:
 			get_angry()
 		return
