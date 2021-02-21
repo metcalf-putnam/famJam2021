@@ -84,7 +84,7 @@ func think_about_food():
 	# TODO: make this a bit random which clue goes in which slot
 	# and, like, if you have fridge + sippy, that's a bit annoying, since all 
 	# things that go into sippy cup are in the fridge
-	
+	print(chosen_food)
 	var clues = [chosen_food["dish"], chosen_food["food_holder"], chosen_food["color"]]
 	
 	clues = remove_duplicate_clues(clues)
@@ -164,13 +164,14 @@ func eat_food():
 
 
 func _on_done_thinking():
+	var corrected_clue_num = clue_current - 1 + (1 if bubble_current >= 4 else 0)
 	if food_accepted:
 		EventHub.emit_signal("food_accepted") # may not keep these accepted/declined signals
-		EventHub.emit_signal("patience_changed", accepted_change, clue_current)
+		EventHub.emit_signal("patience_changed", accepted_change, corrected_clue_num)
 		eat_food()
 	else:
 		EventHub.emit_signal("food_declined") 
-		EventHub.emit_signal("patience_changed", declined_change, clue_current)
+		EventHub.emit_signal("patience_changed", declined_change, corrected_clue_num)
 		state = State.THROW
 		animationState.travel("throw_food")
 	update_head()
@@ -189,7 +190,6 @@ func get_angry():
 func _on_heart_beat():
 	if state != State.HUNGRY:
 		return
-	print("clue current: ", clue_current)
 	if bubble_current >= 4:
 		bubble_current = 1
 		clue_current += 1
@@ -205,6 +205,7 @@ func _on_heart_beat():
 	get_node("Thought" + str(clue_current)).show_bubble(bubble_current)
 	
 	bubble_current += 1
+	
 
 
 func _on_tantrum_end():

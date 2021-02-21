@@ -14,12 +14,12 @@ var upset_speed := 1.75
 var mad_speed := 2.25
 
 const clue_level_multipliers = {
-	1: 3, #delayed by one step, since there will only be one beat after clue 1 is shown before clue level 2 begins
+	0: 6, 
+	1: 3, 
 	2: 2,
 	3: 1,
 	4: 1,
-	5: 1,
-	6: 1
+	5: 1
 }
 
 const happiness_level_multipliers = {
