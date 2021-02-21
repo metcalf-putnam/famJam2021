@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://baby/vocals/music_2.wav" type="AudioStream" id=1]
 [ext_resource path="res://baby/baby.tscn" type="PackedScene" id=2]
@@ -553,6 +553,22 @@ font_data = ExtResource( 12 )
 size = 42
 font_data = ExtResource( 12 )
 
+[sub_resource type="DynamicFont" id=13]
+size = 48
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 64
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 48
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 32
+font_data = ExtResource( 12 )
+
 [node name="Base" type="Node2D"]
 script = ExtResource( 5 )
 
@@ -586,7 +602,6 @@ volume_db = -10.0
 bus = "sfx"
 
 [node name="Food" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 459.142, 446.795 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 10 )
@@ -757,6 +772,43 @@ stream = ExtResource( 1 )
 volume_db = 10.0
 bus = "Music"
 
+[node name="HighScore" type="Label" parent="Title/Buttons"]
+margin_left = 42.0
+margin_top = 406.263
+margin_right = 362.0
+margin_bottom = 501.263
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.568627, 0.415686, 0.776471, 1 )
+text = "best score: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Title/Buttons/HighScore"]
+margin_top = 46.61
+margin_right = 300.0
+margin_bottom = 141.61
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0.568627, 0.415686, 0.776471, 1 )
+text = "60"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeartbeatLabel" type="Label" parent="Title/Buttons/HighScore"]
+margin_top = 100.7
+margin_right = 300.0
+margin_bottom = 195.7
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.568627, 0.415686, 0.776471, 1 )
+text = "heartbeats"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Title"]
 stream = ExtResource( 18 )
 bus = "sfx"
@@ -780,16 +832,67 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
-margin_left = -76.6172
-margin_top = 9.7999
-margin_right = 75.3828
-margin_bottom = 149.8
+[node name="Success" type="AudioStreamPlayer" parent="GameOver"]
+stream = ExtResource( 16 )
+
+[node name="Failure" type="AudioStreamPlayer" parent="GameOver"]
+stream = ExtResource( 17 )
+volume_db = -10.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOver"]
+margin_left = -165.174
+margin_top = -5.13861
+margin_right = 229.826
+margin_bottom = 141.861
+custom_constants/separation = 200
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuButton" type="Button" parent="GameOver/VBoxContainer"]
+[node name="Beats" type="Label" parent="GameOver/HBoxContainer"]
+margin_right = 43.0
+margin_bottom = 147.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.345098, 0.176471, 0.356863, 1 )
+text = "0"
+align = 1
+valign = 3
+
+[node name="label" type="Label" parent="GameOver/HBoxContainer/Beats"]
+margin_left = -85.6412
+margin_top = -12.8372
+margin_right = 207.359
+margin_bottom = 82.1628
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.345098, 0.176471, 0.356863, 1 )
+text = "Heartbeats:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label2" type="Label" parent="GameOver/HBoxContainer/Beats"]
+margin_left = -111.071
+margin_top = 116.567
+margin_right = 181.929
+margin_bottom = 211.567
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.345098, 0.176471, 0.356863, 1 )
+text = "Difficulty:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/HBoxContainer"]
+margin_left = 243.0
+margin_right = 395.0
+margin_bottom = 147.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="Button" parent="GameOver/HBoxContainer/VBoxContainer"]
 modulate = Color( 0.529412, 0.188235, 0.835294, 1 )
 margin_right = 152.0
 margin_bottom = 68.0
@@ -802,7 +905,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StartButton" type="Button" parent="GameOver/VBoxContainer"]
+[node name="StartButton" type="Button" parent="GameOver/HBoxContainer/VBoxContainer"]
 modulate = Color( 0.529412, 0.188235, 0.835294, 1 )
 margin_top = 72.0
 margin_right = 152.0
@@ -816,18 +919,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Success" type="AudioStreamPlayer" parent="GameOver"]
-stream = ExtResource( 16 )
-
-[node name="Failure" type="AudioStreamPlayer" parent="GameOver"]
-stream = ExtResource( 17 )
-volume_db = -10.0
-
 [node name="Music" parent="." instance=ExtResource( 23 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="item_selected" from="Title/Buttons/OptionButton" to="." method="_on_OptionButton_item_selected"]
 [connection signal="pressed" from="Title/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="toggled" from="Title/Buttons/Settings/SoundButton" to="." method="_on_SoundButton_toggled"]
 [connection signal="toggled" from="Title/Buttons/Settings/MusicButton" to="." method="_on_MusicButton_toggled"]
-[connection signal="pressed" from="GameOver/VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
-[connection signal="pressed" from="GameOver/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="GameOver/HBoxContainer/VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="GameOver/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
