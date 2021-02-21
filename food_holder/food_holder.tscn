@@ -19,7 +19,7 @@ corner_radius_bottom_left = 1
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 32
+size = 31
 font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=4]
@@ -91,16 +91,17 @@ __meta__ = {
 }
 
 [node name="restock_glow" type="Sprite" parent="."]
-position = Vector2( 191.708, 566.807 )
+modulate = Color( 1, 0.937255, 0.266667, 1 )
+position = Vector2( 191.288, 562.602 )
 texture = ExtResource( 6 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 143.052
-margin_top = 539.964
-margin_right = 243.051
-margin_bottom = 593.964
+margin_left = 139.688
+margin_top = 537.441
+margin_right = 246.688
+margin_bottom = 591.441
 custom_fonts/font = SubResource( 3 )
-text = "reload"
+text = "restock"
 __meta__ = {
 "_edit_use_anchors_": false
 }
