@@ -28,7 +28,7 @@ const clue_level_multipliers = {
 const happiness_level_multipliers = {
 	Global.Mood.ANGRY: 1,
 	Global.Mood.UPSET: 1,
-	Global.Mood.SAD: 1.2,
+	Global.Mood.SAD: 1.25,
 	Global.Mood.HAPPY: 1.5
 }
 
@@ -128,10 +128,12 @@ func change_value(amount : float, clue_level : int, fed_wrong_food : bool):
 
 func get_adjusted_value(amount, clue_level, fed_wrong_food):
 	
-	if amount >= 0 and not fed_wrong_food:
-		return get_adjusted_positive_value(amount, clue_level)
+	if amount >= 0:
+		if not fed_wrong_food:
+			amount *= clue_level_multipliers[clue_level]
+		amount *= happiness_level_multipliers[Global.mood]
 	
-	if amount < 0:
+	elif amount < 0:
 		return get_adjusted_negative_value(amount, clue_level)
 	
 	return amount
@@ -139,9 +141,6 @@ func get_adjusted_value(amount, clue_level, fed_wrong_food):
 
 func get_adjusted_positive_value(amount, clue_level : int):
 	var adjusted_value = amount
-	
-	adjusted_value *= clue_level_multipliers[clue_level]
-	adjusted_value *= happiness_level_multipliers[Global.mood]
 	
 	return adjusted_value
 
