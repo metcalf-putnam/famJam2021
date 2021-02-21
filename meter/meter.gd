@@ -13,6 +13,8 @@ var sad_speed := 1.25
 var upset_speed := 1.75
 var mad_speed := 2.25
 
+var current_value_target
+
 const clue_level_multipliers = {
 	0: 6, 
 	1: 3, 
@@ -47,6 +49,7 @@ func set_value(value_in):
 func _ready():
 	EventHub.connect("patience_changed", self, "_on_patience_changed")
 	$Heart.position.x = rect_size.x * value / 100
+	current_value_target = value
 	_update_heart_sprite()
 
 
@@ -61,15 +64,15 @@ func _on_patience_changed(amount, clue_level):
 
 
 func _update_heart_sprite():
-	if value <= mad_limit:
+	if current_value_target <= mad_limit:
 		$Heart.texture = mad_heart
 		Global.mood = Global.Mood.ANGRY
 		update_playback_speed(mad_speed)
-	elif value <= upset_limit:
+	elif current_value_target <= upset_limit:
 		$Heart.texture = upset_heart
 		Global.mood = Global.Mood.UPSET
 		update_playback_speed(upset_speed)
-	elif value <= sad_limit:
+	elif current_value_target <= sad_limit:
 		$Heart.texture = sad_heart
 		Global.mood = Global.Mood.SAD
 		update_playback_speed(sad_speed)
@@ -88,8 +91,7 @@ func update_playback_speed(new_value):
 
 
 func change_value(amount : float, clue_level : int):
-	value += get_adjusted_value(amount, clue_level)
-	print("meter value: ", value)
+	var adjustedAmount = get_adjusted_value(amount, clue_level)
 	$Change.rect_position = $Heart.position + change_text_offset
 	var prefix = ""
 	if amount > 0:
@@ -104,9 +106,18 @@ func change_value(amount : float, clue_level : int):
 		$Heart/ValueAnim.play("bonus_anim")
 	else:
 		$Heart/ValueAnim.play("value_change")
-	$Heart.position.x = rect_size.x * value / 100 # TODO: make this tween?
-	if value >= 100 or value <= 0:
-		var win_bool = value >= 100
+	
+	current_value_target = min(100, value + adjustedAmount)
+	var desired_heart_position = rect_size.x * current_value_target / 100 # TODO: make this tween?
+	var desired_heart_vector = Vector2(desired_heart_position, $Heart.position.y)
+	
+	print("meter value: ", current_value_target)
+	
+	$Tween.interpolate_property($Heart, "position", $Heart.position, desired_heart_vector, .6, $Tween.TRANS_SINE, $Tween.EASE_OUT)
+	$Tween.interpolate_property(self, "value", value, current_value_target, .6, $Tween.TRANS_SINE, $Tween.EASE_OUT)
+	$Tween.start()
+	if current_value_target >= 100 or current_value_target <= 0:
+		var win_bool = current_value_target >= 100
 		EventHub.emit_signal("game_over", win_bool)
 		$AnimationPlayer.stop()
 

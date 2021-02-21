@@ -165,6 +165,9 @@ func eat_food():
 
 func _on_done_thinking():
 	var corrected_clue_num = clue_current - 1 + (1 if bubble_current >= 4 else 0)
+	
+	print("Guessed with number of clues: " + str(corrected_clue_num))
+	
 	if food_accepted:
 		EventHub.emit_signal("food_accepted") # may not keep these accepted/declined signals
 		EventHub.emit_signal("patience_changed", accepted_change, corrected_clue_num)
