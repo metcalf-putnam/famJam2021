@@ -774,9 +774,9 @@ bus = "Music"
 
 [node name="HighScore" type="Label" parent="Title/Buttons"]
 margin_left = 42.0
-margin_top = 406.263
+margin_top = 386.161
 margin_right = 362.0
-margin_bottom = 501.263
+margin_bottom = 481.161
 custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0.568627, 0.415686, 0.776471, 1 )
 text = "best score: "
@@ -786,9 +786,9 @@ __meta__ = {
 }
 
 [node name="Value" type="Label" parent="Title/Buttons/HighScore"]
-margin_top = 46.61
+margin_top = 48.61
 margin_right = 300.0
-margin_bottom = 141.61
+margin_bottom = 143.61
 custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0.568627, 0.415686, 0.776471, 1 )
 text = "60"
@@ -798,9 +798,9 @@ __meta__ = {
 }
 
 [node name="HeartbeatLabel" type="Label" parent="Title/Buttons/HighScore"]
-margin_top = 100.7
+margin_top = 110.307
 margin_right = 300.0
-margin_bottom = 195.7
+margin_bottom = 205.307
 custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0.568627, 0.415686, 0.776471, 1 )
 text = "heartbeats"
