@@ -104,7 +104,7 @@ func change_value(amount : float, clue_level : int, fed_wrong_food : bool):
 	else:
 		$Change.self_modulate = negative_color
 		
-	$Change.text = prefix + str(amount)
+	$Change.text = prefix + str(adjustedAmount)
 	
 	if clue_level_multipliers[clue_level] > 1 and amount > 0 and not fed_wrong_food:
 		$Heart/ValueAnim.play("bonus_anim")
