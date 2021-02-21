@@ -166,7 +166,7 @@ var audio_clips = {
 	"red" : "res://baby/vocals/Red.wav",
 	"juice" : "res://baby/vocals/juice.wav",
 	"blue" : "res://baby/vocals/blue_maybe.wav",
-	"fruit_snack" : "res://baby/vocals/treat_3.wav",
+	"fruit_snack" : "res://baby/vocals/snack.wav",
 	"plate" : "res://baby/vocals/plate_2.wav",
 	"bowl" : "res://baby/vocals/bowl_2.wav",
 	"sippy" : "res://baby/vocals/cup.wav",
