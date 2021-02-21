@@ -25,7 +25,7 @@ func _ready():
 	set_process(true)
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("ui_cancel") and !$Title.visible:
 		$ProgressBar.stop()
 		$AnimationPlayer.play("title")
@@ -91,6 +91,7 @@ func _on_StartButton_pressed():
 	initialize_meter()
 	$AnimationPlayer.play("start_game")
 	refresh_objects()
+	$Food.texture = null
 	$Music.title = false
 	$Music.update_song()
 	beats = 0

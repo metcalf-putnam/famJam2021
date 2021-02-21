@@ -135,21 +135,7 @@ func get_adjusted_value(amount, clue_level, consecutive_correct_choices):
 			amount *= clue_level_multipliers[clue_level]
 		amount *= happiness_level_multipliers[Global.mood]
 	
-	elif amount < 0:
-		return get_adjusted_negative_value(amount, clue_level)
-	
 	return amount
 
 
-func get_adjusted_positive_value(amount, clue_level : int):
-	var adjusted_value = amount
-	
-	return adjusted_value
-
-
-# warning-ignore:unused_argument
-func get_adjusted_negative_value(amount, clue_level):	
-	var adjusted_value = amount
-	
-	return adjusted_value
 
