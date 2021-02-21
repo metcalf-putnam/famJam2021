@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://meter/meter.gd" type="Script" id=1]
 [ext_resource path="res://meter/heartupset.png" type="Texture" id=2]
@@ -218,6 +218,49 @@ outline_size = 1
 outline_color = Color( 0.00392157, 0.00392157, 0.00392157, 1 )
 font_data = ExtResource( 4 )
 
+[sub_resource type="Animation" id=9]
+resource_name = "bonus"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 1.1, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [node name="ProgressBar" type="ProgressBar"]
 anchor_left = 0.5
 anchor_right = 0.5
@@ -269,14 +312,31 @@ __meta__ = {
 }
 
 [node name="Change" type="Label" parent="."]
-visible = false
 margin_left = 144.221
 margin_top = 28.9867
 margin_right = 298.221
 margin_bottom = 76.9867
-rect_scale = Vector2( 0.25, 0.25 )
+rect_scale = Vector2( 0.303571, 0.303571 )
 custom_fonts/font = SubResource( 8 )
 text = "+33"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TimesCorrectBonus" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -86.2508
+margin_top = 60.0218
+margin_right = 426.749
+margin_bottom = 155.022
+custom_fonts/font = SubResource( 7 )
+text = "2x streak!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TimesCorrectBonus"]
+autoplay = "idle"
+anims/bonus = SubResource( 9 )
+anims/idle = SubResource( 10 )

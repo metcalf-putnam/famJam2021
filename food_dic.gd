@@ -119,6 +119,7 @@ var foods = [
 	{
 	"name" : "fruit_snack",
 	"sprite_path" : "res://food/fruitsnacks.png",
+	"served_path" : "res://food/served_images/fruitsnacksonplate.png",
 	"food_holder" : "pantry",
 	"liquid" : false,
 	"dish" : "plate",

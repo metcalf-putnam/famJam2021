@@ -744,6 +744,7 @@ __meta__ = {
 }
 
 [node name="Buttons" type="Node2D" parent="Title"]
+visible = false
 
 [node name="OptionButton" type="OptionButton" parent="Title/Buttons"]
 modulate = Color( 0.529412, 0.188235, 0.835294, 1 )

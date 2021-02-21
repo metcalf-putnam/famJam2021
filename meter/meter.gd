@@ -109,8 +109,9 @@ func change_value(amount : float, clue_level : int, consecutive_correct_choices 
 		
 	$Change.text = prefix + str(adjustedAmount)
 	
-	if clue_level_multipliers[clue_level] > 1 and amount > 0 and consecutive_correct_choices > 1:
+	if clue_level_multipliers[clue_level] > 1 and amount > 0 and consecutive_correct_choices > 0:
 		$Heart/ValueAnim.play("bonus_anim")
+		print("playing bonus!")
 	else:
 		$Heart/ValueAnim.play("value_change")
 	
@@ -135,9 +136,17 @@ func get_adjusted_value(amount, clue_level, consecutive_correct_choices):
 			var combo_multiplier = min((consecutive_correct_choices - 1) * .25, 1) + 1
 			amount *= combo_multiplier
 			amount *= clue_level_multipliers[clue_level]
+			set_times_bonus_text(consecutive_correct_choices)
+			print("applying bonus!")
 		amount *= happiness_level_multipliers[Global.mood]
 	
 	return amount
+
+
+func set_times_bonus_text(times):
+	if times > 1:
+		$TimesCorrectBonus.text = str(times) + "X streak bonus!"
+		$TimesCorrectBonus/AnimationPlayer.play("bonus")
 
 
 

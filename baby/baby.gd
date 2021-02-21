@@ -189,6 +189,7 @@ func _on_done_thinking():
 		state = State.THROW
 		animationState.travel("throw_food")
 	
+	print("consecutive correct: ", consecutive_correct_choices)
 	update_head()
 
 
