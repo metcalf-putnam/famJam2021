@@ -11,7 +11,7 @@ var bubble_current := 1
 var animationState : AnimationNodeStateMachinePlayback
 var food_accepted
 var game_over = false
-var fed_wrong_food = false
+var consecutive_correct_choices = 0
 
 var angry_head = preload("res://baby/baby_parts/angryhead.png")
 var frowning_head = preload("res://baby/baby_parts/frowninghead.png")
@@ -24,6 +24,7 @@ var default_clue_audio = preload("res://baby/vocals/Want whimper.wav")
 
 func _ready():
 	update_head()
+	consecutive_correct_choices = 0
 	EventHub.connect("game_over", self, "_on_game_over")
 	EventHub.connect("playback_speed_updated", self, "_on_playback_speed_updated")
 	animationState = $AnimationTree["parameters/playback"]
@@ -77,7 +78,6 @@ func reset_clues():
 	$Thought1.reset()
 	$Thought2.reset()
 	$Thought3.reset()
-	fed_wrong_food = false
 	clue_current = 1
 	bubble_current = 1
 
@@ -171,15 +171,16 @@ func _on_done_thinking():
 	print("Guessed with number of clues: " + str(corrected_clue_num))
 	
 	if food_accepted:
+		consecutive_correct_choices += 1
 		EventHub.emit_signal("food_accepted") # may not keep these accepted/declined signals
-		EventHub.emit_signal("patience_changed", accepted_change, corrected_clue_num, fed_wrong_food)
+		EventHub.emit_signal("patience_changed", accepted_change, corrected_clue_num, consecutive_correct_choices)
 		eat_food()
 	else:
+		consecutive_correct_choices = -1
 		EventHub.emit_signal("food_declined") 
-		EventHub.emit_signal("patience_changed", declined_change, corrected_clue_num, fed_wrong_food)
+		EventHub.emit_signal("patience_changed", declined_change, corrected_clue_num, consecutive_correct_choices)
 		state = State.THROW
 		animationState.travel("throw_food")
-		fed_wrong_food = true
 	
 	update_head()
 
@@ -188,8 +189,9 @@ func get_angry():
 	state = State.TANTRUM
 	Global.active = false
 	update_head()
+	consecutive_correct_choices = 0 #reset so mind reader bonus is available next round
 	EventHub.emit_signal("tantrum")
-	EventHub.emit_signal("patience_changed", tantrum_change, clue_current, fed_wrong_food)
+	EventHub.emit_signal("patience_changed", tantrum_change, clue_current, consecutive_correct_choices)
 	reset_clues()
 	animationState.travel("tantrum")
 

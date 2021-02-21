@@ -60,9 +60,9 @@ func beat():
 	EventHub.emit_signal("heart_beat")
 
 
-func _on_patience_changed(amount, clue_level, fed_wrong_value):
+func _on_patience_changed(amount, clue_level, consecutive_correct_choices):
 	# TODO: add animation effect and sound here
-	change_value(amount, clue_level, fed_wrong_value)
+	change_value(amount, clue_level, consecutive_correct_choices)
 	_update_heart_sprite()
 
 
@@ -93,8 +93,8 @@ func update_playback_speed(new_value):
 	$AnimationPlayer.playback_speed = new_value
 
 
-func change_value(amount : float, clue_level : int, fed_wrong_food : bool):
-	var adjustedAmount = get_adjusted_value(amount, clue_level, fed_wrong_food)
+func change_value(amount : float, clue_level : int, consecutive_correct_choices : int):
+	var adjustedAmount = get_adjusted_value(amount, clue_level, consecutive_correct_choices)
 	
 	$Change.rect_position = $Heart.position + change_text_offset
 	var prefix = ""
@@ -106,7 +106,7 @@ func change_value(amount : float, clue_level : int, fed_wrong_food : bool):
 		
 	$Change.text = prefix + str(adjustedAmount)
 	
-	if clue_level_multipliers[clue_level] > 1 and amount > 0 and not fed_wrong_food:
+	if clue_level_multipliers[clue_level] > 1 and amount > 0 and consecutive_correct_choices > 1:
 		$Heart/ValueAnim.play("bonus_anim")
 	else:
 		$Heart/ValueAnim.play("value_change")
@@ -126,10 +126,9 @@ func change_value(amount : float, clue_level : int, fed_wrong_food : bool):
 		$AnimationPlayer.stop()
 
 
-func get_adjusted_value(amount, clue_level, fed_wrong_food):
-	
-	if amount >= 0:
-		if not fed_wrong_food:
+func get_adjusted_value(amount, clue_level, consecutive_correct_choices):
+	if amount >= 0: #easy to do some kind of combo multiplier here, just need to work out the numbers
+		if consecutive_correct_choices > 0: #if it's 0 that means it was set to -1 by giving wrong food
 			amount *= clue_level_multipliers[clue_level]
 		amount *= happiness_level_multipliers[Global.mood]
 	

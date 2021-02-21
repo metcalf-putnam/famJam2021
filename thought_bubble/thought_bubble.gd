@@ -23,9 +23,16 @@ func show_bubble(num):
 	if num < 1 or num > 3:
 		print("error: bubble does not have a bubble number ", num)
 		return
-	$AnimationPlayer.play("bub" + str(num))
+	if should_show_bubble(num):
+		$AnimationPlayer.play("bub" + str(num))
 	if num == 3:
 		$AudioStreamPlayer.play()
+
+
+func should_show_bubble(num):
+	#maybe I'm missing something obvious, but returning false here seems to be the only thing we
+	#need to do to activate voice-only mode?  Doing voice only for only some clues will/would be trickier
+	return true
 
 
 func _on_playback_speed_updated(new_speed):
