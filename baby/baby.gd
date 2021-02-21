@@ -111,7 +111,13 @@ func remove_duplicate_clues(clues):
 			clues.erase("sippy")
 		else:
 			clues.erase("fridge")
-		
+	
+	elif clues.has("brown") and clues.has("pantry"):
+		if rng.randi() % 2 == 0:
+			clues.erase("brown")
+		else:
+			clues.erase("pantry")
+	
 	return clues
 	
 	
@@ -141,7 +147,7 @@ func get_clue_texture_to_load(clue_name):
 
 func populate_clue(clue_number, clue_name):
 	var texture_to_load = get_clue_texture_to_load(clue_name)
-	var sound = get_audio(clue_name)	
+	var sound = get_audio(clue_name)
 	var texture = load(texture_to_load)
 	get_node("Thought" + str(clue_number)).set_clue(texture, sound)
 
