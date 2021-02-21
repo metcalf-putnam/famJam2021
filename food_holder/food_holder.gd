@@ -30,12 +30,14 @@ func add_food_type(name, preloaded_image):
 func _on_Button_pressed():
 	reload()
 	$Restock.play()
-	$Button.disabled = true
-	$ProgressBar.value = 0
-	$ProgressBar.visible = true
-	$Timer.start(reload_time)
-	$Tween.interpolate_property($ProgressBar, "value", 0, 100, reload_time)
-	$Tween.start()
+	
+	if Global.lose_condition:
+		$Button.disabled = true
+		$ProgressBar.value = 0
+		$ProgressBar.visible = true
+		$Timer.start(reload_time)
+		$Tween.interpolate_property($ProgressBar, "value", 0, 100, reload_time)
+		$Tween.start()
 
 
 func reload():
