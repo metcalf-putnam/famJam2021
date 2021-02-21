@@ -152,7 +152,7 @@ var food_holders = {
 
 var audio_clips = {
 	"milk" : "res://baby/vocals/Milk.wav",
-	"fridge" : "res://baby/vocals/Cold.wav",
+	"fridge" : "res://baby/vocals/fridge.wav",
 	"banana" : "res://baby/vocals/Banana.wav",
 	"pink" : "res://baby/vocals/Pink.wav",
 	"orange" : "res://baby/vocals/orange (1).wav",

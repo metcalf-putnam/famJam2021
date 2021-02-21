@@ -299,7 +299,6 @@ bus = "sfx"
 [node name="Tween" type="Tween" parent="."]
 
 [node name="BonusText" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = -72.7579
 margin_top = 31.4486
 margin_right = 440.242
@@ -324,11 +323,10 @@ __meta__ = {
 }
 
 [node name="TimesCorrectBonus" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = -86.2508
-margin_top = 60.0218
+margin_top = 68.0218
 margin_right = 426.749
-margin_bottom = 155.022
+margin_bottom = 163.022
 custom_fonts/font = SubResource( 7 )
 text = "2x streak!"
 align = 1
