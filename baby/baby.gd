@@ -203,6 +203,10 @@ func get_angry():
 	animationState.travel("tantrum")
 
 
+func reset_combo():
+	consecutive_correct_choices = 0
+
+
 func _on_heart_beat():
 	if state != State.HUNGRY:
 		return

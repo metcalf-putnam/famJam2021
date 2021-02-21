@@ -52,6 +52,7 @@ func initialize_kitchen():
 
 func refresh_objects():
 	$Baby.pick_food()
+	$Baby.reset_combo()
 	$fridge.reload()
 	$pantry.reload()
 	$ProgressBar.start()
