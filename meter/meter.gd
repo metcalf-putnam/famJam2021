@@ -130,8 +130,10 @@ func change_value(amount : float, clue_level : int, consecutive_correct_choices 
 
 
 func get_adjusted_value(amount, clue_level, consecutive_correct_choices):
-	if amount >= 0: #easy to do some kind of combo multiplier here, just need to work out the numbers
+	if amount >= 0:
 		if consecutive_correct_choices > 0: #if it's 0 that means it was set to -1 by giving wrong food
+			var combo_multiplier = min((consecutive_correct_choices - 1) * .25, 1) + 1
+			amount *= combo_multiplier
 			amount *= clue_level_multipliers[clue_level]
 		amount *= happiness_level_multipliers[Global.mood]
 	
