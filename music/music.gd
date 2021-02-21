@@ -1,7 +1,7 @@
 extends Node
 
 var low_db = -50
-var high_db = -15
+var high_db = -20
 var transition_time := 2.0
 
 var title = true
