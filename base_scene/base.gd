@@ -2,7 +2,7 @@ extends Node2D
 var sound : int
 var music : int
 
-enum Difficulty {EASY, NORMAL, HARD, HELLISH}
+enum Difficulty {BABY, NORMAL, HARD, PARENT}
 var selected_difficulty = Difficulty.NORMAL
 const win_text = "Success!"
 const lose_text = "So close!"
@@ -26,10 +26,10 @@ func _ready():
 
 func add_difficulties():
 	# TODO: make a baby mode? Like, for literal babies like Zoey?
-	$Title/Buttons/OptionButton.add_item("easy")
+	$Title/Buttons/OptionButton.add_item("baby")
 	$Title/Buttons/OptionButton.add_item("normal")
 	$Title/Buttons/OptionButton.add_item("hard")
-	$Title/Buttons/OptionButton.add_item("hellish")
+	$Title/Buttons/OptionButton.add_item("parent")
 	$Title/Buttons/OptionButton.select(selected_difficulty)
 
 
@@ -90,6 +90,7 @@ func _on_StartButton_pressed():
 
 
 func _on_OptionButton_item_selected(index):
+	print("here I am!")
 	selected_difficulty = index
 	initialize_meter()
 	var score = Global.get_high_score(selected_difficulty)
@@ -98,20 +99,28 @@ func _on_OptionButton_item_selected(index):
 		$Title/Buttons/HighScore.visible = true
 	else:
 		$Title/Buttons/HighScore.visible = false
+	show_description(index)
 
 
 func initialize_meter():
 	match selected_difficulty:
-		Difficulty.EASY:
-			$ProgressBar.set_value(80)
+		Difficulty.BABY:
+			$ProgressBar.set_value(60)
+			Global.visuals_on = true
+			Global.lose_condition = false
 		Difficulty.NORMAL:
 			$ProgressBar.set_value(55)
+			Global.visuals_on = true
+			Global.lose_condition = true
 		Difficulty.HARD:
 			$ProgressBar.set_value(30)
-			# TODO: make some clues audio only?
-		Difficulty.HELLISH:
-			$ProgressBar.set_value(10)
-			# TODO: make audio only clues?
+			Global.visuals_on = true
+			Global.lose_condition = true
+		Difficulty.PARENT:
+			$ProgressBar.set_value(15)
+			Global.visuals_on = false
+			Global.lose_condition = true
+
 
 func _on_game_over(boolean):
 
@@ -147,6 +156,7 @@ func _on_SoundButton_toggled(button_pressed):
 
 func _on_title_end():
 	$Music.play_title()
+	_on_OptionButton_item_selected($Title/Buttons/OptionButton.selected)
 
 
 func _on_MusicButton_toggled(button_pressed):
@@ -156,3 +166,17 @@ func _on_MusicButton_toggled(button_pressed):
 
 func _on_heart_beat():
 	beats += 1
+
+
+func show_description(index):
+	var description = $Title/DifficultyDescription
+	match index:
+		Difficulty.BABY:
+			description.text = "For actual, real-life babies. No lose condition!"
+		Difficulty.NORMAL:
+			description.text = "Recommended for most players. Visual + verbal clues."
+		Difficulty.HARD:
+			description.text = "Like normal, but with a fiestier toddler."
+		Difficulty.PARENT:
+			description.text = "Only verbal clues (reminder: voice actor is a toddler)"
+	description.visible = true

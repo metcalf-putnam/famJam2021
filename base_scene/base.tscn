@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://baby/vocals/music_2.wav" type="AudioStream" id=1]
 [ext_resource path="res://baby/baby.tscn" type="PackedScene" id=2]
@@ -334,6 +334,32 @@ tracks/7/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Title/DifficultyDescription:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_title_end"
+} ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "title_first_start"
@@ -539,6 +565,18 @@ tracks/14/keys = {
 "method": "_on_title_end"
 } ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("Title/DifficultyDescription:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="DynamicFont" id=8]
 size = 175
@@ -553,19 +591,24 @@ font_data = ExtResource( 12 )
 size = 42
 font_data = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=13]
-size = 48
-font_data = ExtResource( 12 )
-
-[sub_resource type="DynamicFont" id=14]
-size = 64
-font_data = ExtResource( 12 )
-
 [sub_resource type="DynamicFont" id=11]
 size = 48
 font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=12]
+size = 64
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 32
+extra_spacing_top = -18
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 48
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=15]
 size = 32
 font_data = ExtResource( 12 )
 
@@ -602,6 +645,7 @@ volume_db = -10.0
 bus = "sfx"
 
 [node name="Food" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 459.142, 446.795 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 10 )
@@ -777,7 +821,7 @@ margin_left = 42.0
 margin_top = 386.161
 margin_right = 362.0
 margin_bottom = 481.161
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.568627, 0.415686, 0.776471, 1 )
 text = "best score: "
 align = 1
@@ -789,7 +833,7 @@ __meta__ = {
 margin_top = 48.61
 margin_right = 300.0
 margin_bottom = 143.61
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0.568627, 0.415686, 0.776471, 1 )
 text = "60"
 align = 1
@@ -801,7 +845,7 @@ __meta__ = {
 margin_top = 110.307
 margin_right = 300.0
 margin_bottom = 205.307
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.568627, 0.415686, 0.776471, 1 )
 text = "heartbeats"
 align = 1
@@ -813,7 +857,22 @@ __meta__ = {
 stream = ExtResource( 18 )
 bus = "sfx"
 
+[node name="DifficultyDescription" type="Label" parent="Title"]
+visible = false
+margin_left = 581.782
+margin_top = 438.868
+margin_right = 831.782
+margin_bottom = 588.867
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.568627, 0.415686, 0.776471, 1 )
+text = "For actual, real-life babies. No lose condition!"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GameOver" type="Sprite" parent="."]
+visible = false
 self_modulate = Color( 0.984314, 1, 0.556863, 1 )
 position = Vector2( 456.602, 284.802 )
 texture = ExtResource( 14 )
@@ -864,7 +923,7 @@ margin_left = -86.3483
 margin_top = -27.8372
 margin_right = 206.652
 margin_bottom = 67.1628
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0.345098, 0.176471, 0.356863, 1 )
 text = "Heartbeats:"
 __meta__ = {
@@ -876,7 +935,7 @@ margin_left = -85.0
 margin_top = 103.567
 margin_right = 208.0
 margin_bottom = 198.567
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0.345098, 0.176471, 0.356863, 1 )
 text = "Difficulty: Hellish"
 __meta__ = {

@@ -32,7 +32,7 @@ func show_bubble(num):
 func should_show_bubble(num):
 	#maybe I'm missing something obvious, but returning false here seems to be the only thing we
 	#need to do to activate voice-only mode?  Doing voice only for only some clues will/would be trickier
-	return true
+	return Global.visuals_on
 
 
 func _on_playback_speed_updated(new_speed):

@@ -178,7 +178,8 @@ func _on_done_thinking():
 	else:
 		consecutive_correct_choices = -1
 		EventHub.emit_signal("food_declined") 
-		EventHub.emit_signal("patience_changed", declined_change, corrected_clue_num, consecutive_correct_choices)
+		if Global.lose_condition:
+			EventHub.emit_signal("patience_changed", declined_change, corrected_clue_num, consecutive_correct_choices)
 		state = State.THROW
 		animationState.travel("throw_food")
 	
@@ -204,8 +205,9 @@ func _on_heart_beat():
 		clue_current += 1
 
 	if clue_current == 6:
+		if Global.lose_condition:
 			get_angry()
-			return
+		return
 
 	if clue_current >= 4:
 		clue_current += 1

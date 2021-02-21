@@ -7,6 +7,8 @@ var savegame = File.new()
 var save_path = "user://savegame.save" 
 var example_score
 var save_data = {"difficulty": example_score} 
+var visuals_on = true
+var lose_condition = true
 
 
 func _ready() -> void:

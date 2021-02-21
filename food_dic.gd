@@ -69,7 +69,7 @@ var foods = [
 	"food_holder" : "fridge",
 	"liquid" : false,
 	"dish" : "bowl",
-	"color" : "blue"
+	"color" : "yellow"
 	},
 	{
 	"name" : "carrot",
@@ -97,6 +97,32 @@ var foods = [
 	"liquid" : false,
 	"dish" : "plate",
 	"color" : "brown"
+	},
+	{
+	"name" : "rice",
+	"sprite_path" : "res://food/rice.png",
+	"served_path" : "res://food/served_images/riceinbowl.png",
+	"food_holder" : "pantry",
+	"liquid" : false,
+	"dish" : "bowl",
+	"color" : "white"
+	},
+	{
+	"name" : "strawberry",
+	"sprite_path" : "res://food/strawberry.png",
+	"served_path" : "res://food/served_images/strawberriesonplate.png",
+	"food_holder" : "fridge",
+	"liquid" : false,
+	"dish" : "plate",
+	"color" : "red"
+	},
+	{
+	"name" : "fruit_snack",
+	"sprite_path" : "res://food/fruitsnacks.png",
+	"food_holder" : "pantry",
+	"liquid" : false,
+	"dish" : "plate",
+	"color" : "red"
 	},
 
 ]
@@ -131,6 +157,7 @@ var audio_clips = {
 	"orange" : "res://baby/vocals/orange (1).wav",
 	"white" : "res://baby/vocals/White.wav",
 	"yellow" : "res://baby/vocals/yell(ow).wav",
+	"strawberry" : "res://baby/vocals/strawberry_2.wav",
 	"blueberries" : "res://baby/vocals/berries_2.wav",
 	"muffin" : "res://baby/vocals/muffin_2.wav",
 	"water" : "res://baby/vocals/water.wav",
@@ -139,7 +166,7 @@ var audio_clips = {
 	"red" : "res://baby/vocals/Red.wav",
 	"juice" : "res://baby/vocals/juice.wav",
 	"blue" : "res://baby/vocals/blue_maybe.wav",
-	"fruit snack" : "res://baby/vocals/treat_3.wav",
+	"fruit_snack" : "res://baby/vocals/treat_3.wav",
 	"plate" : "res://baby/vocals/plate_2.wav",
 	"bowl" : "res://baby/vocals/bowl_2.wav",
 	"sippy" : "res://baby/vocals/cup.wav",
