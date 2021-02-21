@@ -814,7 +814,6 @@ stream = ExtResource( 18 )
 bus = "sfx"
 
 [node name="GameOver" type="Sprite" parent="."]
-visible = false
 self_modulate = Color( 0.984314, 1, 0.556863, 1 )
 position = Vector2( 456.602, 284.802 )
 texture = ExtResource( 14 )
@@ -840,30 +839,31 @@ stream = ExtResource( 17 )
 volume_db = -10.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GameOver"]
-margin_left = -165.174
-margin_top = -5.13861
-margin_right = 229.826
-margin_bottom = 141.861
-custom_constants/separation = 200
+margin_left = -189.438
+margin_top = -5.8457
+margin_right = 259.562
+margin_bottom = 141.154
+custom_constants/separation = 150
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Beats" type="Label" parent="GameOver/HBoxContainer"]
-margin_right = 43.0
+margin_left = 9.0
+margin_right = 137.0
 margin_bottom = 147.0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.345098, 0.176471, 0.356863, 1 )
-text = "0"
+text = "346"
 align = 1
 valign = 3
 
 [node name="label" type="Label" parent="GameOver/HBoxContainer/Beats"]
-margin_left = -85.6412
-margin_top = -12.8372
-margin_right = 207.359
-margin_bottom = 82.1628
+margin_left = -86.3483
+margin_top = -27.8372
+margin_right = 206.652
+margin_bottom = 67.1628
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.345098, 0.176471, 0.356863, 1 )
 text = "Heartbeats:"
@@ -872,21 +872,20 @@ __meta__ = {
 }
 
 [node name="label2" type="Label" parent="GameOver/HBoxContainer/Beats"]
-margin_left = -111.071
-margin_top = 116.567
-margin_right = 181.929
-margin_bottom = 211.567
+margin_left = -85.0
+margin_top = 103.567
+margin_right = 208.0
+margin_bottom = 198.567
 custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0.345098, 0.176471, 0.356863, 1 )
-text = "Difficulty:"
-align = 1
+text = "Difficulty: Hellish"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOver/HBoxContainer"]
-margin_left = 243.0
-margin_right = 395.0
+margin_left = 287.0
+margin_right = 439.0
 margin_bottom = 147.0
 __meta__ = {
 "_edit_use_anchors_": false

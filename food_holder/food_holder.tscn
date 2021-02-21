@@ -91,15 +91,15 @@ __meta__ = {
 }
 
 [node name="restock_glow" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.793581 )
+modulate = Color( 1, 1, 1, 0.314629 )
 self_modulate = Color( 1, 0.988235, 0.352941, 1 )
-position = Vector2( 191.288, 562.602 )
+position = Vector2( 190.288, 562.602 )
 texture = ExtResource( 6 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 139.688
+margin_left = 137.688
 margin_top = 537.441
-margin_right = 246.688
+margin_right = 244.688
 margin_bottom = 591.441
 custom_fonts/font = SubResource( 3 )
 text = "restock"
