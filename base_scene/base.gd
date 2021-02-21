@@ -22,6 +22,13 @@ func _ready():
 	EventHub.connect("food_declined", self, "_on_food_declined")
 	EventHub.connect("heart_beat", self, "_on_heart_beat")
 	_on_OptionButton_item_selected(selected_difficulty)
+	set_process(true)
+
+
+func _process(delta):
+	if Input.is_action_pressed("ui_cancel") and !$Title.visible:
+		$ProgressBar.stop()
+		$AnimationPlayer.play("title")
 
 
 func add_difficulties():
@@ -90,7 +97,6 @@ func _on_StartButton_pressed():
 
 
 func _on_OptionButton_item_selected(index):
-	print("here I am!")
 	selected_difficulty = index
 	initialize_meter()
 	var score = Global.get_high_score(selected_difficulty)
@@ -176,7 +182,7 @@ func show_description(index):
 		Difficulty.NORMAL:
 			description.text = "Recommended for most players. Visual + verbal clues."
 		Difficulty.HARD:
-			description.text = "Like normal, but with a fiestier toddler."
+			description.text = "Like normal, but with a feistier toddler."
 		Difficulty.PARENT:
 			description.text = "Only verbal clues (reminder: voice actor is a toddler)"
 	description.visible = true

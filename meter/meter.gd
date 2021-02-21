@@ -38,8 +38,11 @@ var negative_color = Color(0.82,0.15,0.14)
 
 
 func start():
-	print ("started")
 	$AnimationPlayer.play("beat")	
+
+
+func stop():
+	$AnimationPlayer.stop()
 
 
 func set_value(value_in):
