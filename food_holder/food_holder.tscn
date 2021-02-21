@@ -91,7 +91,8 @@ __meta__ = {
 }
 
 [node name="restock_glow" type="Sprite" parent="."]
-modulate = Color( 1, 0.937255, 0.266667, 1 )
+modulate = Color( 1, 1, 1, 0.793581 )
+self_modulate = Color( 1, 0.988235, 0.352941, 1 )
 position = Vector2( 191.288, 562.602 )
 texture = ExtResource( 6 )
 
